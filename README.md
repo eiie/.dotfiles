@@ -24,3 +24,16 @@ We can easily update all plugins by pulling git submodules recursively
 git submodule update --init --recursive
 ```
 
+#### Removing plugins ####
+
+To remove a plugin simply remove the directory and commit.
+
+```
+rm -rf ~/.dotfiles/vim/plugins/vim-lsp
+```
+
+Dont forget to remove undesired links in your .vim config folder.
+
+```
+find ../.vim/pack/plugins/start -xtype l | xargs  rm -rf
+```
