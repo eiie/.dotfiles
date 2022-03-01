@@ -26,7 +26,7 @@ git submodule update --init --recursive
 
 #### Removing plugins ####
 
-To remove a plugin simply remove the directory and remove the section in gitmodules file.
+To remove a plugin follow these instructions.
 
 ```
 # Remove the submodule entry from .git/config
