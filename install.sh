@@ -6,7 +6,7 @@ if [[ -d ~/.dotfiles  ]]; then
 	for i in $(ls ~/.dotfiles/vim/plugins); do
 		ln -sf ~/.dotfiles/vim/plugins/$i ~/.vim/pack/plugins/start/$i
 	done
-	[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrca
+	[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrc
     fi
 fi
 
