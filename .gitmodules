@@ -1,6 +1,3 @@
-[submodule "vim/plugins/vim-snippets"]
-	path = vim/plugins/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/plugins/vim-lsp"]
 	path = vim/plugins/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp.git
