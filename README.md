@@ -1,23 +1,26 @@
-# dotfiles #
+# Dotfiles #
 
-dotfiles management for my personal use.
+Dotfiles management for my personal use.
 
-## vim ##
+## Vim ##
 
-### plugins ###
+### Plugins ###
+
+#### Adding plugins ####
 
 Plugins are added via git submodule in vim/plugins directory.
-
-`git submodule add https://github.com/honza/vim-snippets.git vim/plugins/vim-snippets`
-
 
 ```
 git submodule add https://github.com/prabirshrestha/vim-lsp.git vim/plugins/vim-lsp
 ```
 
-
 The installation script make a symbolic link with absolute path in vim configuration folder.
+
+#### Updating plugins ####
 
 We can easily update all plugins by pulling git submodules recursively
 
-`git submodule update --init --recursive`
+```
+git submodule update --init --recursive
+```
+

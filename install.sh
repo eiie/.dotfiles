@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -d ~/.dotfiles  ]]; then
+# vim
     if [[ -d ~/.dotfiles/vim ]]; then
 	mkdir -p ~/.vim/{view,undo,spell,pack/plugins/{start,opt}}
 	for i in $(ls ~/.dotfiles/vim/plugins); do
