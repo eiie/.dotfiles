@@ -1,0 +1,3 @@
+[submodule "vim/plugins/vim-snippets"]
+	path = vim/plugins/vim-snippets
+	url = https://github.com/honza/vim-snippets.git

@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-if [[ -d ~/dotfiles  ]]; then
-    if [[ -f ~/dotfiles/vimrc ]]; then
-	mkdir -p tost/{view,undo,spell,pack/{completion/{start,opt},tpope/{start,opt}}}	
-	ln -sf ~/dotfiles/vimrc  ~/.vim/vimrc
+if [[ -d ~/.dotfiles  ]]; then
+    if [[ -d ~/.dotfiles/vim ]]; then
+	mkdir -p ~/.vim/{view,undo,spell,pack/plugins/{start,opt}}
+	for i in $(ls ~/.dotfiles/vim/plugins); do
+		ln -sf ~/.dotfiles/vim/plugins/$i ~/.vim/pack/plugins/start/$i
+	done
+	[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrca
     fi
 fi
+
