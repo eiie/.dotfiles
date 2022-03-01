@@ -29,8 +29,14 @@ git submodule update --init --recursive
 To remove a plugin simply remove the directory and remove the section in gitmodules file.
 
 ```
-rm -rf ~/.dotfiles/vim/plugins/vim-lsp
-git config --remove-section submodule.vim/plugins/vim-snippets
+# Remove the submodule entry from .git/config
+git submodule deinit -f vim/plugins/vim-lsp
+
+# Remove the submodule directory from the superproject's .git/modules directory
+rm -rf .git/modules/vim/plugins/vim-lsp
+
+# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+git rm -f vim/plugins/vim-lsp
 ```
 
 Dont forget to remove undesired links in your .vim config folder.
