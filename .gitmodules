@@ -50,3 +50,7 @@
 	path = vim/plugins/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
 	ignore = dirty
+[submodule "vim/plugins/asyncomplete-buffer"]
+	path = vim/plugins/asyncomplete-buffer
+	url = https://github.com/prabirshrestha/asyncomplete-buffer.vim.git
+	ignore = dirty
