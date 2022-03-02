@@ -16,3 +16,4 @@ fi
 # add aliases
 # add .bashrc
 # add .tmuxrc
+#
