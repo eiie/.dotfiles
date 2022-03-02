@@ -99,12 +99,12 @@ nnoremap <Left>  :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 
 " j and k occur on display lines instead of real lines
-" nnoremap j gj
-" nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " gj and gk occur on real lines instead of display lines
-" nnoremap gj j
-" nnoremap gk k
+nnoremap gj j
+nnoremap gk k
 
 " Replace C-W + hjkl by C-hjkl
 noremap <C-j> <C-w>j
@@ -148,7 +148,7 @@ nnoremap ]<c-q> :cnfile<CR>
 " Location
 
 nnoremap [l :lprevious<CR>
-nnoremap ]l :lpnext<CR>
+nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
 nnoremap [<c-l> :lpfile<CR>
@@ -174,8 +174,8 @@ nnoremap ]t :tnext<CR>
 nnoremap [T :tfirst<CR>
 nnoremap ]T :tlast<CR>
 
-" Forget to sudo ...
-cnoremap w!! w !sudo tee > /dev/null %
+" Forget to sudo ... (obsolete with tpope euncuh plugin)
+" cnoremap w!! w !sudo tee > /dev/null %
 
 " ----------------------}}}
 " French azerty mappings {{{
@@ -184,8 +184,6 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Go to mark
 nmap è `
 omap è `
-
-" go to last buffer <C-->
 
 " Swap case
 vnoremap é ~
@@ -199,9 +197,13 @@ nmap ç [
 nnoremap çè [`
 nnoremap àè ]`
 
-" remap bracket marks
+" Remap bracket marks
 nnoremap èç `[
 nnoremap èà `]
+
+" Go to last buffer
+nnoremap ° <c-^>
+
 
 " ----------------------}}}
 " Leader key mappings {{{
@@ -229,7 +231,7 @@ nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal
-nnoremap <Leader>t :belowright terminal<cr>
+nnoremap <Leader>t :belowright terminal<cr><c-w>:resize -18<CR>
 
 " Mappings to access buffers
 " \l       : list buffers
@@ -359,7 +361,8 @@ augroup END
 " Tab line {{{
 " -------------------------
 
-set showtabline=1 " Only if there are at least two tab pages
+" set showtabline=1 " Only if there are at least two tab pages
+set showtabline=2 " All the time
 
 " Presentation mode
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
@@ -468,6 +471,9 @@ highlight PmenuSel		term=bold cterm=bold ctermfg=8 ctermbg=2	"selected item
 highlight PmenuSbar		term=bold cterm=bold ctermfg=0 ctermbg=15	"scrollbar
 highlight PmenuThumb		term=bold cterm=bold ctermfg=0 ctermbg=2	"thumb of scrollbar
 
+" Quickfix list
+highlight QuickFixLine		term=bold cterm=bold ctermbg=4 ctermfg=0	"quickfix list
+
 "0 -> Black
 "2 -> Green
 "3 -> Yellow
@@ -493,6 +499,16 @@ let g:markdown_folding=1
 
 au BufRead,BufNewFile *.md setfiletype markdown
 
+" test du linter shellcheck pour du shell script via la commande make %
+au FileType sh setlocal makeprg=shellcheck\ -fgcc
+
+" other ideas :
+" mapping qc, ql, etc. to open quickfix list / location list windows
+"
+" Modification to make :
+" mapping : ]c is use when diffpatch ! : modify to gd (use by macro
+" definition but I dont use it)
+
 " ----------------------}}}
 " Plugins configurations and bindings {{{
 " -------------------------
@@ -502,22 +518,21 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal signcolumn=number
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     nmap <buffer> gd <plug>(lsp-definition)
+    " find function and variables
     nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    " find function and variables on workspace directory
     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
     nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
+"    nmap <buffer> gi <plug>(lsp-implementation) " change : useful in vim
+"    nmap <buffer> gt <plug>(lsp-type-definition) " change : useful in vim
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
+    " nmap <buffer> K <plug>(lsp-hover) " change : useful in vim
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
-    " refer to doc to add more commands
+     let g:lsp_format_sync_timeout = 1000
+     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install

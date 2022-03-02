@@ -54,3 +54,7 @@
 	path = vim/plugins/asyncomplete-buffer
 	url = https://github.com/prabirshrestha/asyncomplete-buffer.vim.git
 	ignore = dirty
+[submodule "vim/plugins/eunuch"]
+	path = vim/plugins/eunuch
+	url = https://github.com/tpope/vim-eunuch
+	ignore = dirty
