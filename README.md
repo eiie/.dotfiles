@@ -2,6 +2,12 @@
 
 Dotfiles management for my personal use.
 
+Do not forget to clone submodules.
+```
+git clone --recurse-submodules https://github.com/eiie/.dotfiles.git
+```
+
+
 ## Vim ##
 
 ### Plugins ###
