@@ -2,11 +2,15 @@
 
 Dotfiles management for my personal use.
 
-Do not forget to clone submodules.
+## Installation ##
+
+Clone the repository wih submodules then launch the installation script.
+
 ```
 git clone --recurse-submodules https://github.com/eiie/.dotfiles.git
+cd .dotfiles
+./install.sh
 ```
-
 
 ## Vim ##
 
