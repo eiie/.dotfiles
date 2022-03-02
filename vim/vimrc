@@ -174,6 +174,10 @@ nnoremap ]t :tnext<CR>
 nnoremap [T :tfirst<CR>
 nnoremap ]T :tlast<CR>
 
+" Diffs
+nnoremap ]d ]c
+nnoremap [d [c
+
 " Forget to sudo ... (obsolete with tpope euncuh plugin)
 " cnoremap w!! w !sudo tee > /dev/null %
 
@@ -508,6 +512,7 @@ au FileType sh setlocal makeprg=shellcheck\ -fgcc
 " Modification to make :
 " mapping : ]c is use when diffpatch ! : modify to gd (use by macro
 " definition but I dont use it)
+" mapping : Fugitive 
 
 " ----------------------}}}
 " Plugins configurations and bindings {{{

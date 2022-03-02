@@ -58,3 +58,7 @@
 	path = vim/plugins/eunuch
 	url = https://github.com/tpope/vim-eunuch
 	ignore = dirty
+[submodule "vim/plugins/unimpaired"]
+	path = vim/plugins/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+	ignore = dirty
