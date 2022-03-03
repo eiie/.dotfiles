@@ -113,10 +113,6 @@ cnoremap <C-n> <down>
 vnoremap > >gv
 vnoremap < <gv
 
-" c-s for saving, also in insert mode
-nnoremap <C-S> :update<CR>
-inoremap <C-S> <C-O>:update<CR>
-
 " Very magic mode for regex (use extended regex)
 nnoremap / /\v
 vnoremap / /\v
@@ -125,16 +121,25 @@ cnoremap \>s/ \>smagic/
 nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
+" Quick yanking to the end of the line
+nnoremap Y y$
+
+" Indent all documents using g=
+nnoremap g= mmgg=G`m
+
 " ----------------------}}}
 " Mappings - function keys {{{
 " -------------------------
 
 " Presentation mode (replace this with Goyo plugin ?)
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
+
 " Toggle list characters
 nmap <F6> :set list! <CR>
+
 " Toggle spellcheck
 nmap <F7> :setlocal spell!<CR>
+
 " Toggle highlight searches
 nmap <F8> :set hls!<CR>
 
@@ -154,11 +159,11 @@ nnoremap é ~
 nmap à ]
 nmap ç [
 
-" remap 'go to next mark' for brackets
+" Remap 'go to next mark' for brackets
 nnoremap çè [`
 nnoremap àè ]`
 
-" " Remap bracket marks
+" Remap bracket marks
 nnoremap èç `[
 nnoremap èà `]
 
@@ -174,7 +179,7 @@ nnoremap ° <c-^>
 nnoremap <SPACE> <Nop>
 let mapleader =" "
 
-" Edit vimrc shortcuts
+" Edit and source vimrc shortcuts
 nnoremap <Leader>ev :tab new $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 
@@ -198,12 +203,6 @@ nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-
-" Quick yanking to the end of the line
-nnoremap Y y$
-
-" Indent all documents using g=
-nnoremap g= mmgg=G`m
 
 " Paste from yank register
 xnoremap <leader>p "0p
