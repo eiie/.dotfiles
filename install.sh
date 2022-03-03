@@ -11,9 +11,8 @@ if [[ -d ~/.dotfiles  ]]; then
     fi
 fi
 
-
 # TODO
 # add aliases
 # add .bashrc
 # add .tmuxrc
-#
+

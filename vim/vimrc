@@ -1,6 +1,7 @@
 " -------------------------
-" Misc {{{
+" Miscellaneous {{{
 " -------------------------
+
 " Enable ftplugins
 filetype plugin indent on
 
@@ -34,15 +35,9 @@ set hidden " buffers can be hidden despite being modified
 set hlsearch " Highlight searches
 set incsearch " Start the search when typing
 set smartcase " Ignore case when search is in lower-case
-" Toggle hls
-nmap <F8> :set hls!<CR>
 
-"
-set showmatch " Highlight matching parenthesis
-
-" History
-set history=1000
-set undolevels=1000
+" Highlight matching parenthesis
+set showmatch 
 
 " Supress sounds
 set visualbell
@@ -52,13 +47,7 @@ set noerrorbells
 set encoding=UTF-8
 
 " List chararacters
-" set list " End lines with "$" character
-set listchars=tab:>-,eol:<,nbsp:% 
-" Toggle list characters
-nmap <F6> :set list! <CR>
-
-" Mouse
-"set mouse=a " Activate mouse
+set listchars=tab:>-,eol:<,nbsp:%
 
 " Fuzzy finder
 set path+=**10
@@ -69,11 +58,11 @@ set wrap
 
 " Spell
 set spelllang=en,fr
-" Toggle spellcheck
-nmap <F7> :setlocal spell!<CR>
+
+" set colorcolumn=80
 
 " ----------------------}}}
-" Mapings {{{
+" Mappings {{{
 " -------------------------
 
 " Disable arrow keys
@@ -136,53 +125,21 @@ cnoremap \>s/ \>smagic/
 nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
-" Quickfix
+" ----------------------}}}
+" Mappings - function keys {{{
+" -------------------------
 
-nnoremap [c :cprevious<CR>
-nnoremap ]c :cnext<CR>
-nnoremap [C :cfirst<CR>
-nnoremap ]C :clast<CR>
-nnoremap [<c-c> :cpfile<CR>
-nnoremap ]<c-q> :cnfile<CR>
-
-" Location
-
-nnoremap [l :lprevious<CR>
-nnoremap ]l :lnext<CR>
-nnoremap [L :lfirst<CR>
-nnoremap ]L :llast<CR>
-nnoremap [<c-l> :lpfile<CR>
-nnoremap ]<c-l> :lnfile<CR>
-
-" Buffer
-
-nnoremap [b :bprevious<CR>
-nnoremap ]b :bnext<CR>
-nnoremap [B :bfirst<CR>
-nnoremap ]B :blast<CR>
-
-" Args
-
-nnoremap [a :previous<CR>
-nnoremap ]a :next<CR>
-nnoremap [A :first<CR>
-nnoremap ]A :last<CR>
-
-" Tags 
-nnoremap [t :tprevious<CR>
-nnoremap ]t :tnext<CR>
-nnoremap [T :tfirst<CR>
-nnoremap ]T :tlast<CR>
-
-" Diffs
-nnoremap ]d ]c
-nnoremap [d [c
-
-" Forget to sudo ... (obsolete with tpope euncuh plugin)
-" cnoremap w!! w !sudo tee > /dev/null %
+" Presentation mode (replace this with Goyo plugin ?)
+nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
+" Toggle list characters
+nmap <F6> :set list! <CR>
+" Toggle spellcheck
+nmap <F7> :setlocal spell!<CR>
+" Toggle highlight searches
+nmap <F8> :set hls!<CR>
 
 " ----------------------}}}
-" French azerty mappings {{{
+" Mappings - french azerty specific {{{
 " -------------------------
 
 " Go to mark
@@ -201,7 +158,7 @@ nmap ç [
 nnoremap çè [`
 nnoremap àè ]`
 
-" Remap bracket marks
+" " Remap bracket marks
 nnoremap èç `[
 nnoremap èà `]
 
@@ -210,7 +167,7 @@ nnoremap ° <c-^>
 
 
 " ----------------------}}}
-" Leader key mappings {{{
+" Mappings - leader key {{{
 " -------------------------
 
 " Set space as leader key
@@ -221,40 +178,12 @@ let mapleader =" "
 nnoremap <Leader>ev :tab new $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 
-" Shortcut to  set cursor line and column
-hi CursorLine   cterm=underline ctermbg=NONE ctermfg=NONE
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-" set colorcolumn=80
-" set cursorline
-" hi CursorLine ctermbg=0
-" hi CursorLineNR ctermbg=8
-
 " Shortcut to trim blanks
 nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal
 nnoremap <Leader>t :belowright terminal<cr><c-w>:resize -18<CR>
-
-" Mappings to access buffers
-" \l       : list buffers
-" \n \p \a : go next/previous/last-used
-" \1 \2 \3 : go to buffer 1/2/3 etc
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>a :e#<CR>
-nnoremap <Leader>& :1b<CR>
-nnoremap <Leader>é :2b<CR>
-nnoremap <Leader>" :3b<CR>
-nnoremap <Leader>' :4b<CR>
-nnoremap <Leader>( :5b<CR>
-nnoremap <Leader>- :6b<CR>
-nnoremap <Leader>è :7b<CR>
-nnoremap <Leader>_ :8b<CR>
-nnoremap <Leader>ç :9b<CR>
-nnoremap <Leader>à :10b<CR>
 
 " Browse MRU files
 nnoremap <Leader>u :browse oldfiles<CR>
@@ -265,10 +194,6 @@ nnoremap <leader>, :ls<CR>:b<Space>
 " Switch CWD to the directory of the open buffer
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Buffers navigation
-nmap <leader>j :bnext<cr>
-nmap <leader>k :bprevious<cr>
-
 " Managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -277,10 +202,10 @@ map <leader>tc :tabclose<cr>
 " Quick yanking to the end of the line
 nnoremap Y y$
 
-" Indent all documents using g= 
+" Indent all documents using g=
 nnoremap g= mmgg=G`m
 
-" Paste from yank register 
+" Paste from yank register
 xnoremap <leader>p "0p
 nnoremap <leader>p "0p
 
@@ -293,7 +218,7 @@ let g:netrw_liststyle=3
 let g:netrw_browse_split=4
 let g:netrw_winsize = 18
 let g:netrw_altv=1
-let g:netrw_cursor=0 " set user's cursor line in netrw
+let g:netrw_cursor=0 " use user's cursor line settings in netrw
 
 " Open netrw at startup
 " augroup netrw
@@ -368,24 +293,28 @@ augroup END
 " set showtabline=1 " Only if there are at least two tab pages
 set showtabline=2 " All the time
 
-" Presentation mode
-nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
-
 " --------------------}}}
-" Folds and views {{{
+" Folds {{{
 " -------------------------
 
-" if has('folding')
-" 	set foldmethod=indent
-" endif
-
+" Small foldcolumn
 set foldcolumn=1
 
-" open and close folds automatically when jumping around
+" Open and close folds automatically when jumping around
 set foldopen=block,hor,mark,percent,quickfix,search,tag,undo
 set foldclose=all
 
+" ----------------------}}}
+" Persistence {{{
+" -------------------------
+
+" History
+set history=1000
+set undolevels=1000
+
+" Views
 set viewdir=$HOME/.vim/view/
+set viewoptions=folds,cursor,curdir
 
 " Automatic mkview to remember folds
 augroup vimrc
@@ -399,20 +328,14 @@ augroup vimrc
 		\|  endif
 augroup END
 
-set viewoptions=folds,cursor,curdir
-
-" ----------------------}}}
-" Persistence {{{
-" -------------------------
-
 " Persistent undo
 set undodir=$HOME/.vim/undo/
 set undofile
 
-" .viminfo 
-
+" .viminfo
 set viminfo='500,f1,:500,<500,/500,%,s100,h,c
-" "500 : file numbers to store marks 
+
+" "500 : file numbers to store marks
 " f1 : save global marks
 " :500 : lines in command-line history
 " <500 : lines in registers
@@ -422,21 +345,10 @@ set viminfo='500,f1,:500,<500,/500,%,s100,h,c
 " h : disable hls when loading .viminfo
 " c : encoding
 
-" -------------------------
 " Sessions
-" -------------------------
-
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal,slash,unix
 
 " add shortcuts with leader key for making sessions and viminfo and restore it ?
-
-" ----------------------}}}
-" Encryption {{{
-" -------------------------
-
-set cm=blowfish2
-" use gpg or pgp with autocommand instead ?
-
 
 " ---------------------}}}
 " Colors {{{
@@ -453,9 +365,19 @@ highlight TabLine		term=bold cterm=bold ctermfg=2 ctermbg=8	"tab pages line, not
 highlight TabLineFill		term=bold cterm=bold ctermfg=8 ctermbg=8	"tab pages line, where there are no labels
 highlight TabLineSel		term=bold cterm=bold ctermfg=0 ctermbg=2	"tab pages line, active tab page label
 
+" Cursor
+highlight CursorLine    	term=underline cterm=underline ctermfg=none ctermbg=none " cursorline
+highlight CursorColumn  	term=bold cterm=bold ctermfg=15 ctermbg=8	" cursor column
+
+" Wildmenu
+highlight Wildmenu      	term=bold cterm=bold ctermfg=2 ctermbg=8	" wildmenu
+
+" Column
+highlight ColorColumn   	term=bold cterm=bold ctermfg=15 ctermbg=8	" cursor column
+
 " Terminal
 highlight StatusLineTerm	term=bold cterm=bold ctermfg=8 ctermbg=4	"status line of current window
-highlight StatusLineTermNC	term=bold cterm=bold ctermfg=4 ctermbg=8	"status lines of not-current windows 
+highlight StatusLineTermNC	term=bold cterm=bold ctermfg=4 ctermbg=8	"status lines of not-current windows
 highlight Terminal		term=bold cterm=bold ctermfg=15 ctermbg=0	"terminal window
 
 " Splits
@@ -486,35 +408,6 @@ highlight QuickFixLine		term=bold cterm=bold ctermbg=4 ctermfg=0	"quickfix list
 "15 -> White
 
 " ----------------------}}}
-" Work in progress {{{
-" -------------------------
-
-" Change colorscheme for markdown file
-" autocmd WinEnter,FileType markdown colorscheme default
-
-" Faire des abbrÃ©viations pour les insertions utilisÃ©s couramment ?
-" iabbrev: #ct #####################
-
-
-" Always open help in an other tab
-" nnoremap :help :tab help
-
-let g:markdown_folding=1
-
-au BufRead,BufNewFile *.md setfiletype markdown
-
-" test du linter shellcheck pour du shell script via la commande make %
-au FileType sh setlocal makeprg=shellcheck\ -fgcc
-
-" other ideas :
-" mapping qc, ql, etc. to open quickfix list / location list windows
-"
-" Modification to make :
-" mapping : ]c is use when diffpatch ! : modify to gd (use by macro
-" definition but I dont use it)
-" mapping : Fugitive 
-
-" ----------------------}}}
 " Plugins configurations and bindings {{{
 " -------------------------
 
@@ -528,16 +421,16 @@ function! s:on_lsp_buffer_enabled() abort
     " find function and variables on workspace directory
     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
     nmap <buffer> gr <plug>(lsp-references)
-"    nmap <buffer> gi <plug>(lsp-implementation) " change : useful in vim
-"    nmap <buffer> gt <plug>(lsp-type-definition) " change : useful in vim
+    "    nmap <buffer> gi <plug>(lsp-implementation) " change : useful in vim
+    "    nmap <buffer> gt <plug>(lsp-type-definition) " change : useful in vim
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     " nmap <buffer> K <plug>(lsp-hover) " change : useful in vim
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-     let g:lsp_format_sync_timeout = 1000
-     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -551,50 +444,68 @@ set completeopt=menuone,noinsert,noselect,preview
 
 " asyncomplete-file registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'allowlist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+	    \ 'name': 'file',
+	    \ 'allowlist': ['*'],
+	    \ 'priority': 10,
+	    \ 'completor': function('asyncomplete#sources#file#completor')
+	    \ }))
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab-y>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 " asyncomplete-Ultisnips registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-            \ 'name': 'ultisnips',
-            \ 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#ultisnips#completor')
-            \ }))
+	    \ 'name': 'ultisnips',
+	    \ 'whitelist': ['*'],
+	    \ 'completor': function('asyncomplete#sources#ultisnips#completor')
+	    \ }))
 
 " asyncomplete-buffer registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['go'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': {
-    \    'max_buffer_size': 5000000,
-    \  },
-    \ }))
+	    \ 'name': 'buffer',
+	    \ 'allowlist': ['*'],
+	    \ 'blocklist': ['go'],
+	    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+	    \ 'config': {
+	    \    'max_buffer_size': 5000000,
+	    \  },
+	    \ }))
 
 " tmuxcomplete registration
-
 let g:tmuxcomplete#asyncomplete_source_options = {
-            \ 'name':      'tmuxcomplete',
-            \ 'whitelist': ['*'],
-            \ 'config': {
-            \     'splitmode':      'words',
-            \     'filter_prefix':   1,
-            \     'show_incomplete': 1,
-            \     'sort_candidates': 0,
-            \     'scrollback':      0,
-            \     'truncate':        0
-            \     }
-            \ }
+	    \ 'name':      'tmuxcomplete',
+	    \ 'whitelist': ['*'],
+	    \ 'config': {
+	    \     'splitmode':      'words',
+	    \     'filter_prefix':   1,
+	    \     'show_incomplete': 1,
+	    \     'sort_candidates': 0,
+	    \     'scrollback':      0,
+	    \     'truncate':        0
+	    \     }
+	    \ }
+
+" ----------------------}}}
+" Work in progress {{{
+" -------------------------
+
+let g:markdown_folding=1
+
+au BufRead,BufNewFile *.md setfiletype markdown
+
+" linter for shell script with shellcheck (use builtin :make % to populate
+" quickfixlist)
+au FileType sh setlocal makeprg=shellcheck\ -fgcc
+
+" other ideas :
+" mapping qc, ql, etc. to open quickfix list / location list windows
+" mapping : Fugitive
+
+set cm=blowfish2
+" use gpg or pgp with autocommand instead ?
 
 " ----------------------}}}
 
