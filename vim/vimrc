@@ -450,7 +450,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 	    \ }))
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<tab-y>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
