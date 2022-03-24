@@ -357,50 +357,50 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,term
 " -------------------------
 
 " StatusLine
-highlight StatusLine		term=bold cterm=bold ctermfg=0 ctermbg=2	"status line of current window
-highlight StatusLineNC		term=bold cterm=bold ctermfg=2 ctermbg=8	"status lines of not-current windows
-au InsertEnter * hi StatusLine term=bold cterm=bold ctermbg=0 ctermbg=3		"status line when entering insert mode
-au InsertLeave * hi StatusLine term=bold cterm=bold ctermfg=0 ctermbg=2		"reset when leaving insert mode
+highlight StatusLine		term=none cterm=none ctermfg=0 ctermbg=2	"status line of current window
+highlight StatusLineNC		term=none cterm=none ctermfg=2 ctermbg=8	"status lines of not-current windows
+au InsertEnter * hi StatusLine term=none cterm=none ctermbg=0 ctermbg=3		"status line when entering insert mode
+au InsertLeave * hi StatusLine term=none cterm=none ctermfg=0 ctermbg=2		"reset when leaving insert mode
 
 " Tabline
-highlight TabLine		term=bold cterm=bold ctermfg=2 ctermbg=8	"tab pages line, not active tab page label
-highlight TabLineFill		term=bold cterm=bold ctermfg=8 ctermbg=8	"tab pages line, where there are no labels
-highlight TabLineSel		term=bold cterm=bold ctermfg=0 ctermbg=2	"tab pages line, active tab page label
+highlight TabLine		term=none cterm=none ctermfg=2 ctermbg=8	"tab pages line, not active tab page label
+highlight TabLineFill		term=none cterm=none ctermfg=8 ctermbg=8	"tab pages line, where there are no labels
+highlight TabLineSel		term=none cterm=none ctermfg=0 ctermbg=2	"tab pages line, active tab page label
 
 " Cursor
 highlight CursorLine    	term=none cterm=none ctermfg=none ctermbg=none " cursorline
-highlight CursorColumn  	term=bold cterm=bold ctermfg=15 ctermbg=8	" cursor column
+highlight CursorColumn  	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Wildmenu
-highlight Wildmenu      	term=bold cterm=bold ctermfg=2 ctermbg=8	" wildmenu
+highlight Wildmenu      	term=none cterm=none ctermfg=2 ctermbg=8	" wildmenu
 
 " Column
-highlight ColorColumn   	term=bold cterm=bold ctermfg=15 ctermbg=8	" cursor column
+highlight ColorColumn   	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Terminal
-highlight StatusLineTerm	term=bold cterm=bold ctermfg=8 ctermbg=4	"status line of current window
-highlight StatusLineTermNC	term=bold cterm=bold ctermfg=4 ctermbg=8	"status lines of not-current windows
-highlight Terminal		term=bold cterm=bold ctermfg=15 ctermbg=0	"terminal window
+highlight StatusLineTerm	term=none cterm=none ctermfg=8 ctermbg=4	"status line of current window
+highlight StatusLineTermNC	term=none cterm=none ctermfg=4 ctermbg=8	"status lines of not-current windows
+highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
 
 " Splits
-highlight VertSplit		term=bold cterm=bold ctermfg=8 ctermbg=0	"vertical split
+highlight VertSplit		term=none cterm=none ctermfg=8 ctermbg=0	"vertical split
 
 " Numbers
-highlight LineNR 		term=bold cterm=bold ctermfg=8 ctermbg=0	"numbers on the ruler
-highlight CursorLineNR		term=bold cterm=bold ctermfg=2 ctermbg=0	"cursor number on the ruler
+highlight LineNR 		term=none cterm=none ctermfg=8 ctermbg=0	"numbers on the ruler
+highlight CursorLineNR		term=none cterm=none ctermfg=2 ctermbg=0	"cursor number on the ruler
 
 " Folds
-highlight Folded		term=bold cterm=bold ctermfg=2 ctermbg=0	"fold
-highlight FoldColumn		term=bold cterm=bold ctermfg=0 ctermbg=0	"fold column (ruler)
+highlight Folded		term=none cterm=none ctermfg=2 ctermbg=0	"fold
+highlight FoldColumn		term=none cterm=none ctermfg=0 ctermbg=0	"fold column (ruler)
 
 " Pop-up menu
-highlight Pmenu			term=bold cterm=bold ctermfg=15 ctermbg=8	"normal item
-highlight PmenuSel		term=bold cterm=bold ctermfg=8 ctermbg=2	"selected item
-highlight PmenuSbar		term=bold cterm=bold ctermfg=0 ctermbg=15	"scrollbar
-highlight PmenuThumb		term=bold cterm=bold ctermfg=0 ctermbg=2	"thumb of scrollbar
+highlight Pmenu			term=none cterm=none ctermfg=15 ctermbg=8	"normal item
+highlight PmenuSel		term=none cterm=none ctermfg=8 ctermbg=2	"selected item
+highlight PmenuSbar		term=none cterm=none ctermfg=0 ctermbg=15	"scrollbar
+highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollbar
 
 " Quickfix list
-highlight QuickFixLine		term=bold cterm=bold ctermbg=4 ctermfg=0	"quickfix list
+highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
 
 "0 -> Black
 "2 -> Green
