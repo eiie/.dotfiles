@@ -30,9 +30,14 @@ if [[ -d ~/.dotfiles  ]]; then
 		done
 	    fi
 	fi
-	# bashrc
-	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
-	fi
+    fi
+    # bashrc
+    #	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
+    #	fi
+    # dunst
+    if [[ -d ~/.dotfiles/dunst ]]; then
+	mkdir -p ~/.config/dunst
+	[[ -f ~/.dotfiles/dunst/dunstrc ]] && ln -sf ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
     fi
 fi
 

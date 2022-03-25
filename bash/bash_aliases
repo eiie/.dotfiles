@@ -1,1 +1,5 @@
 alias eval-ssh-key='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+alias pacman_autoremove='sudo pacman -Rcs $(pacman -Qdtq)'
+alias ll='ls -l'
+alias la='ls -la'
+alias vi=vim
