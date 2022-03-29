@@ -129,6 +129,9 @@ nnoremap Y y$
 " Indent all documents using g=
 nnoremap g= mmgg=G`m
 
+" Remap c-w s-n to esc
+tnoremap <Esc> <C-w><S-n>
+
 " ----------------------}}}
 " Mappings - function keys {{{
 " -------------------------
@@ -503,11 +506,18 @@ au BufRead,BufNewFile *.md setfiletype markdown
 au FileType sh setlocal makeprg=shellcheck\ -fgcc
 
 " other ideas :
-" mapping qc, ql, etc. to open quickfix list / location list windows
+" mapping qc, ql, or Qc, Ql ? etc. to open quickfix list / location list windows
 " mapping : Fugitive
 
 set cm=blowfish2
 " use gpg or pgp with autocommand instead ?
+
+" disable ex mode mapping
+map Q <nop>
+
+" switch to insert mode when focusing on terminal window (not working)
+autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+
 
 " ----------------------}}}
 
