@@ -68,10 +68,10 @@ set cursorline
 " -------------------------
 
 " Disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <right> <nop>
-nnoremap <left> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <right> <nop>
+" nnoremap <left> <nop>
 
 vnoremap <up> <nop>
 vnoremap <down> <nop>
@@ -82,6 +82,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <right> <nop>
 inoremap <left> <nop>
+
+" Disable ex mode mapping
+map Q <nop>
 
 " Resize window with arrows
 nnoremap <Up>    :resize -2<CR>
@@ -98,10 +101,10 @@ nnoremap gj j
 nnoremap gk k
 
 " Replace C-W + hjkl by C-hjkl
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+" noremap <C-h> <C-w>h
 
 " Disable arrow keys in command line mode
 cnoremap <up> <nop>
@@ -362,8 +365,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,term
 " StatusLine
 highlight StatusLine		term=none cterm=none ctermfg=0 ctermbg=2	"status line of current window
 highlight StatusLineNC		term=none cterm=none ctermfg=2 ctermbg=8	"status lines of not-current windows
-au InsertEnter * hi StatusLine term=none cterm=none ctermbg=0 ctermbg=3		"status line when entering insert mode
-au InsertLeave * hi StatusLine term=none cterm=none ctermfg=0 ctermbg=2		"reset when leaving insert mode
+au InsertEnter * hi StatusLine	term=none cterm=none ctermbg=0 ctermbg=3	"status line when entering insert mode
+au InsertLeave * hi StatusLine	term=none cterm=none ctermfg=0 ctermbg=2	"reset when leaving insert mode
 
 " Tabline
 highlight TabLine		term=none cterm=none ctermfg=2 ctermbg=8	"tab pages line, not active tab page label
@@ -371,7 +374,7 @@ highlight TabLineFill		term=none cterm=none ctermfg=8 ctermbg=8	"tab pages line,
 highlight TabLineSel		term=none cterm=none ctermfg=0 ctermbg=2	"tab pages line, active tab page label
 
 " Cursor
-highlight CursorLine    	term=none cterm=none ctermfg=none ctermbg=none " cursorline
+highlight CursorLine    	term=none cterm=none ctermfg=none ctermbg=none	" cursorline
 highlight CursorColumn  	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Wildmenu
@@ -405,12 +408,7 @@ highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollb
 " Quickfix list
 highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
 
-"0 -> Black
-"2 -> Green
-"3 -> Yellow
-"4 -> Blue
-"8 -> Grey
-"15 -> White
+"0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
 " ----------------------}}}
 " Plugins configurations and bindings {{{
@@ -455,19 +453,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 	    \ 'completor': function('asyncomplete#sources#file#completor')
 	    \ }))
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-
-" asyncomplete-Ultisnips registration
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-	    \ 'name': 'ultisnips',
-	    \ 'whitelist': ['*'],
-	    \ 'completor': function('asyncomplete#sources#ultisnips#completor')
-	    \ }))
-
 " asyncomplete-buffer registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
 	    \ 'name': 'buffer',
@@ -493,16 +478,30 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 	    \     }
 	    \ }
 
+" asyncomplete-Ultisnips registration
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+	    \ 'name': 'ultisnips',
+	    \ 'whitelist': ['*'],
+	    \ 'completor': function('asyncomplete#sources#ultisnips#completor')
+	    \ }))
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+
 " ----------------------}}}
 " Work in progress {{{
 " -------------------------
 
+" Markdown
 let g:markdown_folding=1
 
 au BufRead,BufNewFile *.md setfiletype markdown
 
-" linter for shell script with shellcheck (use builtin :make % to populate
-" quickfixlist)
+" linter for shell script with built-in make command with shellcheck (use
+" builtin :make % to populate quickfixlist)
 au FileType sh setlocal makeprg=shellcheck\ -fgcc
 
 " other ideas :
@@ -510,14 +509,10 @@ au FileType sh setlocal makeprg=shellcheck\ -fgcc
 " mapping : Fugitive
 
 set cm=blowfish2
-" use gpg or pgp with autocommand instead ?
-
-" disable ex mode mapping
-map Q <nop>
+" look at gpg / pgp with autocommand instead ?
 
 " switch to insert mode when focusing on terminal window (not working)
 autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
-
 
 " ----------------------}}}
 
