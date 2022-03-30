@@ -196,13 +196,13 @@ nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal
-nnoremap <Leader>t :belowright terminal<cr><c-w>:resize -18<CR>
+nnoremap <Leader>te :belowright terminal<cr><c-w>:resize -18<CR>
 
 " Browse MRU files
 nnoremap <Leader>u :browse oldfiles<CR>
 
 " List and chosse buffer
-nnoremap <leader>, :ls<CR>:b<Space>
+nnoremap <leader>ls :ls<CR>:b<Space>
 
 " Switch CWD to the directory of the open buffer
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -250,7 +250,7 @@ function! ToggleNetrw()
     else
 	let g:NetrwIsOpen=1
 	silent Vexplore"! for right side
-	silent :hi CursorLine term=bold cterm=bold ctermbg=8
+	silent :hi CursorLine term=none cterm=none ctermbg=8
 	silent :setlocal cursorline
     endif
 endfunction
