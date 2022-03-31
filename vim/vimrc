@@ -143,12 +143,15 @@ tnoremap <Esc> <C-w><S-n>
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
 
 " Toggle list characters
+" to remove cause "yol" do the same in unimpaired tpope plugin
 nmap <F6> :set list! <CR>
 
 " Toggle spellcheck
+" to remove cause "yoz" do the same in unimpaired tpope plugin
 nmap <F7> :setlocal spell!<CR>
 
 " Toggle highlight searches
+" to remove cause "yoh" do the same in unimpaired tpope plugin
 nmap <F8> :set hls!<CR>
 
 " ----------------------}}}
@@ -215,6 +218,11 @@ map <leader>tc :tabclose<cr>
 " Paste from yank register
 xnoremap <leader>p "0p
 nnoremap <leader>p "0p
+
+" Git mapping (for fugitive tpope plugin)
+nnoremap <leader>gs :G <CR>
+nnoremap <leader>gc :Git commit <CR>
+nnoremap <leader>gp :Git push <CR>
 
 " ----------------------}}}
 " Netrw {{{
@@ -502,7 +510,7 @@ au BufRead,BufNewFile *.md setfiletype markdown
 
 " linter for shell script with built-in make command with shellcheck (use
 " builtin :make % to populate quickfixlist)
-au FileType sh setlocal makeprg=shellcheck\ -fgcc
+au FileType sh setlocal makeprg=shellcheck\ -fgcc\ %
 
 " other ideas :
 " mapping qc, ql, or Qc, Ql ? etc. to open quickfix list / location list windows
