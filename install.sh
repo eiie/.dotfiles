@@ -31,8 +31,8 @@ if [[ -d ~/.dotfiles  ]]; then
 	    fi
 	fi
 	# bashrc
-	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
-	fi
+	# if [[ -f ~/.dotfiles/bash/bashrc ]]; then
+	# fi
     fi
 fi
 
