@@ -1,5 +1,5 @@
 alias evalssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias ll='ls -l'
 alias vi='vim'
-alias psfirefox='ps -aux  | grep firefox$'
+alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
 alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
