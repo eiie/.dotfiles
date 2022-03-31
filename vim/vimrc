@@ -223,6 +223,7 @@ nnoremap <leader>p "0p
 nnoremap <leader>gs :G <CR>
 nnoremap <leader>gc :Git commit <CR>
 nnoremap <leader>gp :Git push <CR>
+nnoremap <leader>gl :GV <CR>
 
 " ----------------------}}}
 " Netrw {{{
