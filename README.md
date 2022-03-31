@@ -55,19 +55,17 @@ Dont forget to remove undesired links in your .vim config folder.
 find ../.vim/pack/plugins/start -xtype l | xargs  rm -rf
 ```
 
-## Help tags ##
+### Help tags ###
 
-Help tags should be generated after adding a new plugin.
+Help tags should be generated after adding a new plugin within vim.
 
 ```
 :helptags ALL
 ```
 
-
-
 ## Bash ##
 
 The installation script make a symbolic link with absolute path in the home folder for the following files.
 
-* .bash_aliases
-> * .bashrc
+- .bash_aliases
+> - .bashrc
