@@ -37,7 +37,7 @@ set incsearch " Start the search when typing
 set smartcase " Ignore case when search is in lower-case
 
 " Highlight matching parenthesis
-set showmatch 
+set showmatch
 
 " Supress sounds
 set visualbell
@@ -181,6 +181,9 @@ nnoremap èà `]
 " Go to last buffer
 nnoremap ° <c-^>
 
+" Find remap for c-] because c-$ does not work for me here 
+" nnoremap <c-à> <c-]>
+
 
 " ----------------------}}}
 " Mappings - leader key {{{
@@ -224,6 +227,10 @@ nnoremap <leader>gs :G <CR>
 nnoremap <leader>gc :Git commit <CR>
 nnoremap <leader>gp :Git push <CR>
 nnoremap <leader>gl :GV <CR>
+
+" Make mapping
+
+nnoremap <leader>ma :make <CR> <CR>
 
 " ----------------------}}}
 " Netrw {{{
@@ -512,6 +519,7 @@ au BufRead,BufNewFile *.md setfiletype markdown
 " linter for shell script with built-in make command with shellcheck (use
 " builtin :make % to populate quickfixlist)
 au FileType sh setlocal makeprg=shellcheck\ -fgcc\ %
+au FileType markdown setlocal makeprg=pandoc\ %\ -o\ %:r.pdf
 
 " other ideas :
 " mapping qc, ql, or Qc, Ql ? etc. to open quickfix list / location list windows
