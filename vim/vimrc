@@ -232,6 +232,9 @@ nnoremap <leader>gl :GV <CR>
 
 nnoremap <leader>ma :make <CR> <CR>
 
+" Date in french format
+nnoremap <leader>da :pu=strftime('%d/%m/%Y')<CR>
+
 " ----------------------}}}
 " Netrw {{{
 " -------------------------
