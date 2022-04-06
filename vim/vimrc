@@ -449,6 +449,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     " nmap <buffer> K <plug>(lsp-hover) " change : useful in vim
+    nmap <buffer> <leader>K <plug>(lsp-hover) " change : useful in vim
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
     let g:lsp_format_sync_timeout = 1000
@@ -533,6 +534,26 @@ set cm=blowfish2
 
 " switch to insert mode when focusing on terminal window (not working)
 autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+
+
+
+
+
+
+
+
+if executable('terraform-ls')
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'terraform-ls',
+            \ 'cmd': {server_info->['terraform-ls', 'serve']},
+            \ 'whitelist': ['terraform'],
+            \ })
+endif
+
+
+
+
+
 
 " ----------------------}}}
 
