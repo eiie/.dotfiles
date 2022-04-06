@@ -462,6 +462,16 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+
+" terraform lsp server configuration
+if executable('terraform-ls')
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'terraform-ls',
+            \ 'cmd': {server_info->['terraform-ls', 'serve']},
+            \ 'whitelist': ['terraform'],
+            \ })
+endif
+
 " autocomplete options
 set completeopt=menuone,noinsert,noselect,preview
 
@@ -535,24 +545,8 @@ set cm=blowfish2
 " switch to insert mode when focusing on terminal window (not working)
 autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
 
-
-
-
-
-
-
-
-if executable('terraform-ls')
-    au User lsp_setup call lsp#register_server({
-            \ 'name': 'terraform-ls',
-            \ 'cmd': {server_info->['terraform-ls', 'serve']},
-            \ 'whitelist': ['terraform'],
-            \ })
-endif
-
-
-
-
+" filetype detection
+au BufNewFile,BufRead *.tf set filetype=terraform
 
 
 " ----------------------}}}
