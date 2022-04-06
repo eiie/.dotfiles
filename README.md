@@ -63,6 +63,12 @@ Help tags should be generated after adding a new plugin within vim.
 :helptags ALL
 ```
 
+### Dependecies ###
+
+Some programs need to be installed to enjoy all the features:
+
+- terraform-ls: lsp server for terraform file
+
 ## Bash ##
 
 The installation script make a symbolic link with absolute path in the home folder for the following files.
