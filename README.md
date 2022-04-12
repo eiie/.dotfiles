@@ -75,3 +75,12 @@ The installation script make a symbolic link with absolute path in the home fold
 
 - .bash_aliases
 > - .bashrc
+
+## Readline ##
+
+The configuration link is made here: `~/.config/readline/inputrc`. Readline need to be aware of this path so I define some environment variables.
+
+```
+export XDG_CONFIG_HOME=~/.config
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+```
