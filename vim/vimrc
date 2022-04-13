@@ -1,4 +1,4 @@
-" -------------------------
+"------------------------
 " Miscellaneous {{{
 " -------------------------
 
@@ -20,7 +20,7 @@ colorscheme slate
 set autoindent
 set tabstop=8
 set softtabstop=8
-set shiftwidth=4
+set shiftwidth=8
 
 " Wildmenu
 set wildmenu
@@ -34,7 +34,8 @@ set hidden " buffers can be hidden despite being modified
 " Search
 set hlsearch " Highlight searches
 set incsearch " Start the search when typing
-set smartcase " Ignore case when search is in lower-case
+set ignorecase " Ignore case whe searching
+set smartcase " Override ignorecase when search an uppercase character
 
 " Highlight matching parenthesis
 set showmatch 
@@ -172,7 +173,6 @@ nnoremap èà `]
 " Go to last buffer
 nnoremap ° <c-^>
 
-
 " ----------------------}}}
 " Mappings - leader key {{{
 " -------------------------
@@ -190,13 +190,13 @@ nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal
-nnoremap <Leader>t :belowright terminal<cr><c-w>:resize -18<CR>
+nnoremap <Leader>te :belowright terminal<cr><c-w>:resize -18<CR>
 
 " Browse MRU files
 nnoremap <Leader>u :browse oldfiles<CR>
 
 " List and chosse buffer
-nnoremap <leader>, :ls<CR>:b<Space>
+nnoremap <leader>ls :ls<CR>:b<Space>
 
 " Switch CWD to the directory of the open buffer
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -214,12 +214,12 @@ nnoremap <leader>p "0p
 " Netrw {{{
 " -------------------------
 
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_browse_split=4
-let g:netrw_winsize = 12
-let g:netrw_altv=1
-let g:netrw_cursor=0 " use user's cursor line settings in netrw
+let g:netrw_banner=0		"Suppress the banner
+let g:netrw_liststyle=3		"Tree style listing
+let g:netrw_browse_split=4	"Open in previous window when netrw is used in a split 
+let g:netrw_winsize = 12	"Set netrw window size
+let g:netrw_altv=1		"Left splitting
+let g:netrw_cursor=0		"Use user's cursor line settings in netrw
 
 " Open netrw at startup
 " augroup netrw
@@ -257,7 +257,6 @@ nnoremap <silent> ù :call ToggleNetrw()<CR>
 " -------------------------
 
 set showmode
-
 set laststatus=2 " always enable status line
 set ruler " position in %
 set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{FugitiveStatusline()} " statusline with Fugitive
@@ -312,7 +311,6 @@ set foldclose=all
 
 " History
 set history=1000
-set undolevels=1000
 
 " Views
 set viewdir=$HOME/.vim/view/
@@ -333,6 +331,7 @@ augroup END
 " Persistent undo
 set undodir=$HOME/.vim/undo/
 set undofile
+set undolevels=1000
 
 " .viminfo
 set viminfo='500,f1,:500,<500,/500,%,s100,h,c
