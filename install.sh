@@ -30,7 +30,6 @@ if [[ -d ~/.dotfiles  ]]; then
 		done
 	    fi
 	fi
-<<<<<<< HEAD
     fi
     # bashrc
     #	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
@@ -39,17 +38,12 @@ if [[ -d ~/.dotfiles  ]]; then
     if [[ -d ~/.dotfiles/dunst ]]; then
 	mkdir -p ~/.config/dunst
 	[[ -f ~/.dotfiles/dunst/dunstrc ]] && ln -sf ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
-=======
-	# bashrc
-	# if [[ -f ~/.dotfiles/bash/bashrc ]]; then
-	# fi
     fi
 
     # readline
     if [[ -d ~/.dotfiles/readline ]]; then
 	mkdir -p ~/.config/readline
 	[[ -f ~/.dotfiles/readline/inputrc ]] && ln -sf ~/.dotfiles/readline/inputrc  ~/.config/readline/inputrc
->>>>>>> a19767ff1938948f2d3621ca37434bd37cd5641d
     fi
 fi
 
