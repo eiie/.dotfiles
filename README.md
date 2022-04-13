@@ -55,9 +55,32 @@ Dont forget to remove undesired links in your .vim config folder.
 find ../.vim/pack/plugins/start -xtype l | xargs  rm -rf
 ```
 
+### Help tags ###
+
+Help tags should be generated after adding a new plugin within vim.
+
+```
+:helptags ALL
+```
+
+### Dependecies ###
+
+Some programs need to be installed to enjoy all the features:
+
+- terraform-ls: lsp server for terraform file
+
 ## Bash ##
 
 The installation script make a symbolic link with absolute path in the home folder for the following files.
 
-* .bash_aliases
-> * .bashrc
+- .bash_aliases
+> - .bashrc
+
+## Readline ##
+
+The configuration link is made here: `~/.config/readline/inputrc`. Readline need to be aware of this path so I define some environment variables.
+
+```
+export XDG_CONFIG_HOME=~/.config
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+```

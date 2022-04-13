@@ -62,3 +62,11 @@
 	path = vim/plugins/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 	ignore = dirty
+[submodule "vim/plugins/gv.vim"]
+	path = vim/plugins/gv.vim
+	url = https://github.com/junegunn/gv.vim.git
+	ignore = dirty
+[submodule "vim/plugins/vim-peekaboo"]
+	path = vim/plugins/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo.git
+	ignore = dirty

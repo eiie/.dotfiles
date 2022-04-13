@@ -1,5 +1,10 @@
-alias eval-ssh-key='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias pacman_autoremove='sudo pacman -Rcs $(pacman -Qdtq)'
-alias ll='ls -l'
-alias la='ls -la'
-alias vi=vim
+alias evalssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+alias ll='ls -lh'
+alias la='ls -lah
+alias vi='vim'
+alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
+alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
+alias gs='git status'
+alias gc='git commit'
+alias gb='git checkout'
+alias flameshot='flameshot gui'

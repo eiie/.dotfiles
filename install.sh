@@ -5,7 +5,7 @@ if [[ -d ~/.dotfiles  ]]; then
     if [[ -d ~/.dotfiles/vim ]]; then
 	mkdir -p ~/.vim/{view,undo,spell,pack/plugins/{start,opt}}
 	for i in $(ls ~/.dotfiles/vim/plugins); do
-	    ln -sf ~/.dotfiles/vim/plugins/"$i" ~/.vim/pack/plugins/start/"$i"
+	    [[ -f "$i" ]] && ln -sf ~/.dotfiles/vim/plugins/"$i" ~/.vim/pack/plugins/start/"$i"
 	done
 	[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrc
     fi
@@ -30,6 +30,7 @@ if [[ -d ~/.dotfiles  ]]; then
 		done
 	    fi
 	fi
+<<<<<<< HEAD
     fi
     # bashrc
     #	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
@@ -38,6 +39,17 @@ if [[ -d ~/.dotfiles  ]]; then
     if [[ -d ~/.dotfiles/dunst ]]; then
 	mkdir -p ~/.config/dunst
 	[[ -f ~/.dotfiles/dunst/dunstrc ]] && ln -sf ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
+=======
+	# bashrc
+	# if [[ -f ~/.dotfiles/bash/bashrc ]]; then
+	# fi
+    fi
+
+    # readline
+    if [[ -d ~/.dotfiles/readline ]]; then
+	mkdir -p ~/.config/readline
+	[[ -f ~/.dotfiles/readline/inputrc ]] && ln -sf ~/.dotfiles/readline/inputrc  ~/.config/readline/inputrc
+>>>>>>> a19767ff1938948f2d3621ca37434bd37cd5641d
     fi
 fi
 
@@ -46,6 +58,3 @@ fi
 # add .bashrc
 # add .tmuxrc
 # make a function to check if link / absent, etc. and make the link
-
-
-

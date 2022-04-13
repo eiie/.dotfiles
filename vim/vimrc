@@ -38,7 +38,7 @@ set ignorecase " Ignore case whe searching
 set smartcase " Override ignorecase when search an uppercase character
 
 " Highlight matching parenthesis
-set showmatch 
+set showmatch
 
 " Supress sounds
 set visualbell
@@ -69,10 +69,10 @@ set cursorline
 " -------------------------
 
 " Disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <right> <nop>
-nnoremap <left> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <right> <nop>
+" nnoremap <left> <nop>
 
 vnoremap <up> <nop>
 vnoremap <down> <nop>
@@ -83,6 +83,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <right> <nop>
 inoremap <left> <nop>
+
+" Disable ex mode mapping
+map Q <nop>
 
 " Resize window with arrows
 nnoremap <Up>    :resize -2<CR>
@@ -99,10 +102,10 @@ nnoremap gj j
 nnoremap gk k
 
 " Replace C-W + hjkl by C-hjkl
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+" noremap <C-h> <C-w>h
 
 " Disable arrow keys in command line mode
 cnoremap <up> <nop>
@@ -130,6 +133,9 @@ nnoremap Y y$
 " Indent all documents using g=
 nnoremap g= mmgg=G`m
 
+" Remap c-w s-n to esc
+tnoremap <Esc> <C-w><S-n>
+
 " ----------------------}}}
 " Mappings - function keys {{{
 " -------------------------
@@ -138,12 +144,15 @@ nnoremap g= mmgg=G`m
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
 
 " Toggle list characters
+" to remove cause "yol" do the same in unimpaired tpope plugin
 nmap <F6> :set list! <CR>
 
 " Toggle spellcheck
+" to remove cause "yoz" do the same in unimpaired tpope plugin
 nmap <F7> :setlocal spell!<CR>
 
 " Toggle highlight searches
+" to remove cause "yoh" do the same in unimpaired tpope plugin
 nmap <F8> :set hls!<CR>
 
 " ----------------------}}}
@@ -172,6 +181,9 @@ nnoremap èà `]
 
 " Go to last buffer
 nnoremap ° <c-^>
+
+" Find remap for c-] because c-$ does not work for me here 
+" nnoremap <c-à> <c-]>
 
 " ----------------------}}}
 " Mappings - leader key {{{
@@ -209,6 +221,19 @@ map <leader>tc :tabclose<cr>
 " Paste from yank register
 xnoremap <leader>p "0p
 nnoremap <leader>p "0p
+
+" Git mapping (for fugitive tpope plugin)
+nnoremap <leader>gs :G <CR>
+nnoremap <leader>gc :Git commit <CR>
+nnoremap <leader>gp :Git push <CR>
+nnoremap <leader>gl :GV <CR>
+
+" Make mapping
+
+nnoremap <leader>ma :make <CR> <CR>
+
+" Date in french format
+nnoremap <leader>da :pu=strftime('%d/%m/%Y')<CR>
 
 " ----------------------}}}
 " Netrw {{{
@@ -368,7 +393,7 @@ highlight TabLineFill		term=none cterm=none ctermfg=8 ctermbg=8	"tab pages line,
 highlight TabLineSel		term=none cterm=none ctermfg=0 ctermbg=2	"tab pages line, active tab page label
 
 " Cursor
-highlight CursorLine    	term=none cterm=none ctermfg=none ctermbg=none " cursorline
+highlight CursorLine    	term=none cterm=none ctermfg=none ctermbg=none	" cursorline
 highlight CursorColumn  	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Wildmenu
@@ -400,14 +425,8 @@ highlight PmenuSbar		term=none cterm=none ctermfg=0 ctermbg=15	"scrollbar
 highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollbar
 
 " Quickfix list
-    highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
-
-    "0 -> Black
-    "2 -> Green
-    "3 -> Yellow
-    "4 -> Blue
-    "8 -> Grey
-    "15 -> White
+highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
+"0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
     " ----------------------}}}
     " Plugins configurations and bindings {{{
@@ -429,6 +448,7 @@ highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollb
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     " nmap <buffer> K <plug>(lsp-hover) " change : useful in vim
+    nmap <buffer> <leader>K <plug>(lsp-hover) " change : useful in vim
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
     let g:lsp_format_sync_timeout = 1000
@@ -441,6 +461,15 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+" terraform lsp server configuration
+if executable('terraform-ls')
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'terraform-ls',
+            \ 'cmd': {server_info->['terraform-ls', 'serve']},
+            \ 'whitelist': ['terraform'],
+            \ })
+endif
+
 " autocomplete options
 set completeopt=menuone,noinsert,noselect,preview
 
@@ -450,19 +479,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 	    \ 'allowlist': ['*'],
 	    \ 'priority': 10,
 	    \ 'completor': function('asyncomplete#sources#file#completor')
-	    \ }))
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-
-" asyncomplete-Ultisnips registration
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-	    \ 'name': 'ultisnips',
-	    \ 'whitelist': ['*'],
-	    \ 'completor': function('asyncomplete#sources#ultisnips#completor')
 	    \ }))
 
 " asyncomplete-buffer registration
@@ -490,24 +506,46 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 	    \     }
 	    \ }
 
+" asyncomplete-Ultisnips registration
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+	    \ 'name': 'ultisnips',
+	    \ 'whitelist': ['*'],
+	    \ 'completor': function('asyncomplete#sources#ultisnips#completor')
+	    \ }))
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+
 " ----------------------}}}
 " Work in progress {{{
 " -------------------------
 
+" Markdown
 let g:markdown_folding=1
 
 au BufRead,BufNewFile *.md setfiletype markdown
 
-" linter for shell script with shellcheck (use builtin :make % to populate
-" quickfixlist)
-au FileType sh setlocal makeprg=shellcheck\ -fgcc
+" linter for shell script with built-in make command with shellcheck (use
+" builtin :make % to populate quickfixlist)
+au FileType sh setlocal makeprg=shellcheck\ -fgcc\ %
+au FileType markdown setlocal makeprg=pandoc\ %\ -o\ %:r.pdf
 
 " other ideas :
-" mapping qc, ql, etc. to open quickfix list / location list windows
+" mapping qc, ql, or Qc, Ql ? etc. to open quickfix list / location list windows
 " mapping : Fugitive
 
 set cm=blowfish2
-" use gpg or pgp with autocommand instead ?
+" look at gpg / pgp with autocommand instead ?
+
+" switch to insert mode when focusing on terminal window (not working)
+autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+
+" filetype detection
+au BufNewFile,BufRead *.tf set filetype=terraform
+
 
 " ----------------------}}}
 
