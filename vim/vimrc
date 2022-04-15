@@ -18,9 +18,9 @@ colorscheme slate
 
 " Indentation
 set autoindent
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
+set tabstop=2
+set shiftwidth=2 
+set softtabstop=-1 " TODO use value of shiftwidth
 
 " Wildmenu
 set wildmenu
@@ -48,7 +48,7 @@ set noerrorbells
 set encoding=UTF-8
 
 " List chararacters
-set listchars=tab:>-,eol:<,nbsp:%
+set listchars=tab:>-,eol:<,nbsp:%,trail:·
 
 " Fuzzy finder
 set path+=**10
@@ -205,7 +205,7 @@ nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 nnoremap <Leader>te :belowright terminal<cr><c-w>:resize -18<CR>
 
 " Browse MRU files
-nnoremap <Leader>u :browse oldfiles<CR>
+nnoremap <Leader>ol :browse oldfiles<CR>
 
 " List and chosse buffer
 nnoremap <leader>ls :ls<CR>:b<Space>
@@ -242,7 +242,7 @@ nnoremap <leader>da :pu=strftime('%d/%m/%Y')<CR>
 let g:netrw_banner=0		"Suppress the banner
 let g:netrw_liststyle=3		"Tree style listing
 let g:netrw_browse_split=4	"Open in previous window when netrw is used in a split 
-let g:netrw_winsize = 12	"Set netrw window size
+let g:netrw_winsize = 16	"Set netrw window size
 let g:netrw_altv=1		"Left splitting
 let g:netrw_cursor=0		"Use user's cursor line settings in netrw
 
