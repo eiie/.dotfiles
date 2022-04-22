@@ -561,6 +561,12 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+let python_highlight_all=1
+
+" test  vim-flake8 and syntastic
+
+
+
 " ----------------------}}}
 
 " vim: foldmethod=marker:foldmarker={{{,}}}
