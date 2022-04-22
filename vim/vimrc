@@ -551,6 +551,15 @@ autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | en
 " filetype detection
 au BufNewFile,BufRead *.tf set filetype=terraform
 
+" python - pep 8
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 " ----------------------}}}
 
