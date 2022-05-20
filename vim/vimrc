@@ -240,7 +240,7 @@ nnoremap <leader>ql :lopen <CR>
 nnoremap <leader>qc :copen <CR>
 nnoremap <leader>qd :LspDocumentDiagnostics <CR>
 
-"vim grep
+" vim grep
 
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>
 
@@ -476,6 +476,15 @@ if executable('terraform-ls')
             \ 'name': 'terraform-ls',
             \ 'cmd': {server_info->['terraform-ls', 'serve']},
             \ 'whitelist': ['terraform'],
+            \ })
+endif
+
+" ansible lsp server configuration
+if executable('ansible-language-server')
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'ansible-language-server',
+            \ 'cmd': {server_info->['ansible-language-server', 'serve']},
+            \ 'whitelist': ['ansible'],
             \ })
 endif
 
