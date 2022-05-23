@@ -229,20 +229,20 @@ nnoremap <leader>gp :Git push <CR>
 nnoremap <leader>gl :GV <CR>
 
 " Make mapping
-
 nnoremap <leader>ma :make <CR> <CR>
 
 " Date in french format
 nnoremap <leader>da :pu=strftime('%d/%m/%Y')<CR>
 
-" 
+" Lists
 nnoremap <leader>ql :lopen <CR>
 nnoremap <leader>qc :copen <CR>
+nnoremap <leader>qq :copen <CR>
 nnoremap <leader>qd :LspDocumentDiagnostics <CR>
 
-" vim grep
-
+" Grep
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>
+nnoremap <leader>gr yaw:silent grep -Rs <c-r>" ./<cr><c-l>
 
 " ----------------------}}}
 " Netrw {{{
