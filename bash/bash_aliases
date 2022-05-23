@@ -4,6 +4,7 @@ alias la='ls -lah'
 alias vi='vim'
 alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
 alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
+alias pacmanexplicitinstalled='pacman -Qqem'
 alias gs='git status'
 alias gc='git commit'
 alias gb='git checkout'
