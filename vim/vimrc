@@ -370,7 +370,7 @@ set undolevels=1000
 
 " .viminfo
 set viminfo='500,f1,:500,<500,/500,%,s100,h,c
-set viminfofile=$HOME/.viminfo
+set viminfofile=$HOME/.vim/viminfo
 
 " "500 : file numbers to store marks
 " f1 : save global marks
