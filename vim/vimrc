@@ -326,8 +326,8 @@ augroup END
 " Tab line {{{
 " -------------------------
 
-" set showtabline=1 " Only if there are at least two tab pages
-set showtabline=2 " All the time
+set showtabline=1 " Only if there are at least two tab pages
+" set showtabline=2 " All the time
 
 " --------------------}}}
 " Folds {{{
