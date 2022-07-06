@@ -70,3 +70,7 @@
 	path = vim/plugins/vim-peekaboo
 	url = https://github.com/junegunn/vim-peekaboo.git
 	ignore = dirty
+[submodule "vim/plugins/gitgutter"]
+	path = vim/plugins/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+	ignore = dirty
