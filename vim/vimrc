@@ -65,6 +65,9 @@ set spelllang=en,fr
 " Set CursorLine to display CursorLineNR color
 set cursorline
 
+" Cursor can move freely in visual block mode
+set virtualedit=block
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
