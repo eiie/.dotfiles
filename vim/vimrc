@@ -246,7 +246,7 @@ nnoremap <leader>qd :LspDocumentDiagnostics <CR>
 
 " Grep
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>:copen<cr>
-nnoremap <leader>gr yaw:silent grep -Rs <c-r>" ./<cr><c-l>:copen<cr>
+nnoremap <leader>gr yaw:silent grep -Rsi <c-r>" ./<cr><c-l>:copen<cr>
 
 " ----------------------}}}
 " Netrw {{{
