@@ -545,6 +545,9 @@ let g:UltiSnipsEditSplit="vertical"
 " Work in progress {{{
 " -------------------------
 
+" Jinja
+au BufNewFile,BufRead *.j2 set ft=jinja
+
 " Markdown
 let g:markdown_folding=1
 
