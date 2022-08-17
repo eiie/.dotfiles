@@ -138,7 +138,7 @@ nnoremap Y y$
 nnoremap g= mmgg=G`m
 
 " Remap c-w s-n to esc
-tnoremap <Esc> <C-w><S-n>
+"tnoremap <Esc> <C-w><S-n>
 
 " ----------------------}}}
 " Mappings - function keys {{{
@@ -545,9 +545,6 @@ let g:UltiSnipsEditSplit="vertical"
 " Work in progress {{{
 " -------------------------
 
-" Jinja
-au BufNewFile,BufRead *.j2 set ft=jinja
-
 " Markdown
 let g:markdown_folding=1
 
@@ -570,6 +567,7 @@ autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | en
 
 " filetype detection
 au BufNewFile,BufRead *.tf set filetype=terraform
+au BufNewFile,BufRead *.j2 set ft=jinja
 
 " python - pep 8
 au BufNewFile,BufRead *.py

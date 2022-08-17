@@ -45,6 +45,12 @@ if [[ -d ~/.dotfiles  ]]; then
 		mkdir -p ~/.config/readline
 		[[ -f ~/.dotfiles/readline/inputrc ]] && ln -sf ~/.dotfiles/readline/inputrc  ~/.config/readline/inputrc
 	fi
+
+	# tmux
+	if [[ -d ~/.dotfiles/tmux ]]; then
+		mkdir -p ~/.config/tmux
+		[[ -f ~/.dotfiles/tmux/tmux.conf ]] && ln -sf ~/.dotfiles/tmux/tmux.conf  ~/.config/tmux/tmux.conf
+	fi
 fi
 
 # TODO
