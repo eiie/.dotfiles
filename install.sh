@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
+config_link() {
+	config_dir=$1
+	config_file=$2
+	if [[ -d "$HOME/.dotfiles/$config_dir" ]]; then
+		mkdir -p "$HOME/.config/$config_dir"
+		[[ -f "$HOME/.dotfiles/$config_dir/$config_file" ]] && ln -sf "$HOME/.dotfiles/$config_dir/$config_file"  "$HOME/.config/$config_dir/$config_file"
+	fi
+}
+
 if [[ -d ~/.dotfiles  ]]; then
 	# vim
 	if [[ -d ~/.dotfiles/vim ]]; then
 		mkdir -p ~/.vim/{view,undo,spell,pack/plugins/start}
-		for i in $(ls ~/.dotfiles/vim/plugins); do
+		for i in "$HOME/.dotfiles/vim/plugins/*"; do
 			[[ -r ~/.dotfiles/vim/plugins/"$i" ]] && ln -sf ~/.dotfiles/vim/plugins/"$i" ~/.vim/pack/plugins/start/"$i"
 		done
 		[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrc
@@ -34,27 +43,14 @@ if [[ -d ~/.dotfiles  ]]; then
 	# bashrc
 	#	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
 	#	fi
-	# dunst
-	if [[ -d ~/.dotfiles/dunst ]]; then
-		mkdir -p ~/.config/dunst
-		[[ -f ~/.dotfiles/dunst/dunstrc ]] && ln -sf ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
-	fi
-
-	# readline
-	if [[ -d ~/.dotfiles/readline ]]; then
-		mkdir -p ~/.config/readline
-		[[ -f ~/.dotfiles/readline/inputrc ]] && ln -sf ~/.dotfiles/readline/inputrc  ~/.config/readline/inputrc
-	fi
-
-	# tmux
-	if [[ -d ~/.dotfiles/tmux ]]; then
-		mkdir -p ~/.config/tmux
-		[[ -f ~/.dotfiles/tmux/tmux.conf ]] && ln -sf ~/.dotfiles/tmux/tmux.conf  ~/.config/tmux/tmux.conf
-	fi
+	config_link dunst dunstrc
+	config_link readline inputrc
+	config_link tmux tmux.conf
 fi
 
 # TODO
 # add aliases
 # add .bashrc
+# add. .dir_colors (move in .config)
 # add .tmuxrc
 # make a function to check if link / absent, etc. and make the link
