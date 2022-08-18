@@ -4,7 +4,7 @@ Dotfiles management for my personal use.
 
 ## Installation ##
 
-Clone the repository wih submodules then launch the installation script.
+Clone the repository wih submodules in your home directory then launch the installation script.
 
 ```
 git clone --recurse-submodules https://github.com/eiie/.dotfiles.git
@@ -69,17 +69,25 @@ Some programs need to be installed to enjoy all the features:
 
 - terraform-ls: lsp server for terraform file
 
-## Bash ##
+## Configuration ##
 
-The installation script make a symbolic link with absolute path in the home folder for the following files.
+### Classic ###
+
+The installation script make a symbolic link or with absolute path or copy the file in the home folder for the following files.
 
 - .bash_aliases
 > - .bashrc
 
-## Readline ##
+### XDG ###
 
-The configuration link is made here: `~/.config/readline/inputrc`. Readline need to be aware of this path so I define some environment variables.
+Software list :
+- dunst
+- readline
+- tmux
 
+The installation script make a symbolic link with absolute path or copy the file in XDG config folder : `~/.config/<config_dir>/<config_file>`.
+
+Environment variable are needed to configure the XDG folder. 
 ```
 export XDG_CONFIG_HOME=~/.config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
