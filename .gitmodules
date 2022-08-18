@@ -85,3 +85,4 @@
 [submodule "vim/plugins/tabular"]
 	path = vim/plugins/tabular
 	url = https://github.com/godlygeek/tabular.git
+	ignore = dirty
