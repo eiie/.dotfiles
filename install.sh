@@ -20,7 +20,7 @@ config () {
 				ln -sf "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file"
 			elif [[ -n $(diff "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file") ]]; then
 				while true; do
-					read -p "A precedent configuration of $config_file has been foud, do you want to erase it ? (Y/n) (d to see diff)" yn
+					read -r -p "A precedent configuration of $config_file has been foud, do you want to erase it ? (Y/n) (d to see diff)" yn
 					yn=${yn:-y}
 					case $yn in
 						[Yy]* )
@@ -36,9 +36,9 @@ config () {
 	fi
 }
 
-if [[ -d $HOME/.dotfiles  ]]; then
-	# vim
-	if [[ -d $HOME/.dotfiles/vim ]]; then
+if [[ -d "$HOME/.dotfiles"  ]]; then
+	# vim specific
+	if [[ -d "$HOME/.dotfiles/vim" ]]; then
 		mkdir -p "$HOME/.vim/{view,undo,spell,pack/plugins/start}"
 		for i in "$HOME/.dotfiles/vim/plugins/"*; do
 			[[ -r "$HOME/.dotfiles/vim/plugins/$i" ]] && ln -sf "$HOME/.dotfiles/vim/plugins/$i" "$HOME/.vim/pack/plugins/start/$i"
@@ -50,6 +50,8 @@ if [[ -d $HOME/.dotfiles  ]]; then
 	config readline inputrc xdg
 	config tmux tmux.conf xdg
 	config bash bash_aliases classic link
+else
+	printf "Please clone the repository in your home directory"
 fi
 
 # TODO
