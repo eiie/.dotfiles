@@ -1,56 +1,58 @@
 #!/usr/bin/env bash
 
-config_link() {
-	config_dir=$1
+config () {
+	config_dir=".config/$1"
+	config_base_dir=$1
 	config_file=$2
+	config_type=$3 # xdg or classic
 	if [[ -d "$HOME/.dotfiles/$config_dir" ]]; then
-		mkdir -p "$HOME/.config/$config_dir"
-		[[ -f "$HOME/.dotfiles/$config_dir/$config_file" ]] && ln -sf "$HOME/.dotfiles/$config_dir/$config_file"  "$HOME/.config/$config_dir/$config_file"
-	fi
-}
-
-if [[ -d ~/.dotfiles  ]]; then
-	# vim
-	if [[ -d ~/.dotfiles/vim ]]; then
-		mkdir -p ~/.vim/{view,undo,spell,pack/plugins/start}
-		for i in "$HOME/.dotfiles/vim/plugins/*"; do
-			[[ -r ~/.dotfiles/vim/plugins/"$i" ]] && ln -sf ~/.dotfiles/vim/plugins/"$i" ~/.vim/pack/plugins/start/"$i"
-		done
-		[[ -f ~/.dotfiles/vim/vimrc ]] && ln -sf ~/.dotfiles/vim/vimrc  ~/.vim/vimrc
-	fi
-
-	# bash
-	if [[ -d ~/.dotfiles/bash ]]; then
-		# bash_aliases
-		if [[ -f ~/.dotfiles/bash/bash_aliases ]]; then
-			if [ -L ~/.bash_aliases ]; then
-				ln -sf ~/.dotfiles/bash/bash_aliases ~/.bash_aliases
-			elif [ ! -f ~/.bash_aliases ]; then
-				ln -sf ~/.dotfiles/bash/bash_aliases ~/.bash_aliases
-			else
+	case $config_type in
+		xdg) mkdir -p "$HOME/$config_dir" ;;
+		classic) config_dir="" ;;
+	esac
+		if [[ -f "$HOME/.dotfiles/$config_base_dir/$config_file" ]]; then
+			if [[ -L "$HOME/$config_dir/$config_file" ]]; then
+				ln -sf "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file"
+			elif [[ ! -f "$HOME/$config_dir/$config_file" ]]; then
+				ln -sf "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file"
+			elif [[ -z $(diff "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file") ]]; then
 				while true; do
-					read -p "A precedent configuration of .bash_aliases has been foud, do you want to erase it ? (Y/n)" yn
+					read -p "A precedent configuration of $config_file has been foud, do you want to erase it ? (Y/n) (d to see diff)" yn
 					yn=${yn:-y}
 					case $yn in
-						[Yy]* ) ln -sf ~/.dotfiles/bash/bash_aliases ~/.bash_aliases; break;;
-						[Nn]* ) echo ".bash_aliases installation have been skipped" ; break;;
+						[Yy]* )
+							[[ $config_type = "xdg" ]] && ln -sf "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file"
+							[[ $config_type = "classic" ]] && cp "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file" ; break;;
+						[Nn]* ) echo "$config_file installation have been skipped" ; break;;
+						[Dd]* ) diff "$HOME/.dotfiles/$config_base_dir/$config_file" "$HOME/$config_dir/$config_file" ; continue ;;
 						* ) continue;
 					esac
 				done
 			fi
 		fi
 	fi
-	# bashrc
-	#	if [[ -f ~/.dotfiles/bash/bashrc ]]; then
-	#	fi
-	config_link dunst dunstrc
-	config_link readline inputrc
-	config_link tmux tmux.conf
+	# echo $config_dir
+	# echo $config_base_dir
+	# echo $config_file
+	# echo $config_type
+}
+
+if [[ -d $HOME/.dotfiles  ]]; then
+	# vim
+	if [[ -d $HOME/.dotfiles/vim ]]; then
+		mkdir -p "$HOME/.vim/{view,undo,spell,pack/plugins/start}"
+		for i in "$HOME/.dotfiles/vim/plugins/"*; do
+			[[ -r "$HOME/.dotfiles/vim/plugins/$i" ]] && ln -sf "$HOME/.dotfiles/vim/plugins/$i" "$HOME/.vim/pack/plugins/start/$i"
+		done
+		[[ -f "$HOME/.dotfiles/vim/vimrc" ]] && ln -sf "$HOME/.dotfiles/vim/vimrc" "$HOME/.vim/vimrc"
+	fi
+
+	config dunst dunstrc xdg
+	config readline inputrc xdg
+	config tmux tmux.conf xdg
+	config bash bash_aliases classic
 fi
 
 # TODO
-# add aliases
 # add .bashrc
 # add. .dir_colors (move in .config)
-# add .tmuxrc
-# make a function to check if link / absent, etc. and make the link
