@@ -3,7 +3,7 @@
 if [[ -d ~/.dotfiles  ]]; then
 	# vim
 	if [[ -d ~/.dotfiles/vim ]]; then
-		mkdir -p ~/.vim/{view,undo,spell,pack/plugins/{start,opt}}
+		mkdir -p ~/.vim/{view,undo,spell,pack/plugins/start}
 		for i in $(ls ~/.dotfiles/vim/plugins); do
 			[[ -r ~/.dotfiles/vim/plugins/"$i" ]] && ln -sf ~/.dotfiles/vim/plugins/"$i" ~/.vim/pack/plugins/start/"$i"
 		done

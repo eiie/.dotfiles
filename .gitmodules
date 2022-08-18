@@ -74,3 +74,14 @@
 	path = vim/plugins/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 	ignore = dirty
+[submodule "vim/plugins/vim-speeddating"]
+	path = vim/plugins/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+	ignore = dirty
+[submodule "vim/plugins/vim-gitgutter"]
+	path = vim/plugins/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+	ignore = dirty
+[submodule "vim/plugins/tabular"]
+	path = vim/plugins/tabular
+	url = https://github.com/godlygeek/tabular.git
