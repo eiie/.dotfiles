@@ -205,8 +205,9 @@ nnoremap <Leader>sv :source $MYVIMRC<cr>
 nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
-" Shortcuts for the terminal
+" Shortcuts for the terminal and shell
 nnoremap <Leader>te :belowright terminal<cr><c-w>:resize -18<CR>
+nnoremap <Leader>sh :shell<cr>
 
 " Browse MRU files
 nnoremap <Leader>ol :browse oldfiles<CR>
@@ -580,10 +581,6 @@ au BufNewFile,BufRead *.py
     \set fileformat=unix
 
 let python_highlight_all=1
-
-" test  vim-flake8 and syntastic
-
-
 
 " ----------------------}}}
 
