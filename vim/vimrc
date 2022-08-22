@@ -42,7 +42,7 @@ set smartcase " Override ignorecase when search an uppercase character
 set showmatch
 
 " Supress sounds
-set visualbell
+set novisualbell
 set noerrorbells
 
 " Encoding
