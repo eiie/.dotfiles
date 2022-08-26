@@ -133,6 +133,7 @@ nnoremap qc :copen<cr>
 nnoremap ql :lopen<cr>
 " jump list (:jumps)
 " change list (:changes)
+" undo list (:undolist)
 " buffer list (:ls / :buffers / :files)
 " argument list (:args)
 " tag list (:tags)
@@ -410,7 +411,7 @@ highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
 "0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
 " ----------------------}}}
-" Plugins configurations and bindings {{{
+" Plugins (configuration and mappings) {{{
 " -------------------------
 
 function! s:on_lsp_buffer_enabled() abort
@@ -509,8 +510,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
+" Undotree
+nmap <F8> : UndotreeToggle<CR>
+
 " ----------------------}}}
-" Filetype detection {{{
+" Filetype {{{
 " -------------------------
 
 " Terraform
