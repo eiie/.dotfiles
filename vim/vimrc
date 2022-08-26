@@ -1,5 +1,4 @@
 "------------------------
-
 " Miscellaneous {{{
 " -------------------------
 
@@ -25,8 +24,7 @@ set softtabstop=-1 " TODO use value of shiftwidth
 
 " Wildmenu
 set wildmenu
-"set wildmode=longest:full
-"set wildmode=list,longest
+set wildmode=longest:full,full
 set wildcharm=<C-Z>
 
 " Buffers
@@ -61,7 +59,6 @@ set wrap
 " Spell
 set spelllang=en,fr
 
-" set colorcolumn=80
 " Set CursorLine to display CursorLineNR color
 set cursorline
 
@@ -71,12 +68,6 @@ set virtualedit=block
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
-
-" Disable arrow keys
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <right> <nop>
-" nnoremap <left> <nop>
 
 vnoremap <up> <nop>
 vnoremap <down> <nop>
@@ -105,12 +96,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Replace C-W + hjkl by C-hjkl
-" noremap <C-j> <C-w>j
-" noremap <C-k> <C-w>k
-" noremap <C-l> <C-w>l
-" noremap <C-h> <C-w>h
-
 " Disable arrow keys in command line mode
 cnoremap <up> <nop>
 cnoremap <down> <nop>
@@ -137,8 +122,15 @@ nnoremap Y y$
 " Indent all documents using g=
 nnoremap g= mmgg=G`m
 
-" Remap c-w s-n to esc
-"tnoremap <Esc> <C-w><S-n>
+" open lists more easily
+nnoremap qc :copen<cr>
+nnoremap ql :lopen<cr>
+" jump list (:jumps)
+" change list (:changes)
+" buffer list (:ls / :buffers / :files)
+" argument list (:args)
+" tag list (:tags)
+" ilist & dlist
 
 " ----------------------}}}
 " Mappings - function keys {{{
@@ -146,18 +138,6 @@ nnoremap g= mmgg=G`m
 
 " Presentation mode (replace this with Goyo plugin ?)
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
-
-" Toggle list characters
-" to remove cause "yol" do the same in unimpaired tpope plugin
-nmap <F6> :set list! <CR>
-
-" Toggle spellcheck
-" to remove cause "yoz" do the same in unimpaired tpope plugin
-nmap <F7> :setlocal spell!<CR>
-
-" Toggle highlight searches
-" to remove cause "yoh" do the same in unimpaired tpope plugin
-nmap <F8> :set hls!<CR>
 
 " ----------------------}}}
 " Mappings - french azerty specific {{{
@@ -260,13 +240,6 @@ let g:netrw_winsize = 16	"Set netrw window size
 let g:netrw_altv=1		"Left splitting
 let g:netrw_cursor=0		"Use user's cursor line settings in netrw
 
-" Open netrw at startup
-" augroup netrw
-"	autocmd!
-"	autocmd VimEnter * :Lexplore
-"	autocmd
-" augroup END
-
 " Function toggle netrw
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
@@ -299,7 +272,6 @@ set showmode
 set laststatus=2 " always enable status line
 set ruler " position in %
 set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{FugitiveStatusline()} " statusline with Fugitive
-" set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{b:git_branch}\ " statusline with functions below
 
 " %< - where to truncate the line if too long
 " %0* - restore normal highlight
@@ -315,16 +287,6 @@ set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{FugitiveStatusl
 " %c - column
 " %V - virtual column
 " %P - percentage
-
-" Git branch for statusline
-function Gitbranch()
-    " return trim(system("git -C " . expand("%:h") . " branch --show-current 2>NUL")) " windows way
-    return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null")) " linux way
-endfunction
-augroup Gitget
-    autocmd!
-    autocmd BufEnter * let b:git_branch = Gitbranch()
-augroup END
 
 " ----------------------}}}
 " Tab line {{{
@@ -388,8 +350,6 @@ set viminfofile=$HOME/.vim/viminfo
 
 " Sessions
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal,slash,unix
-
-" add shortcuts with leader key for making sessions and viminfo and restore it ?
 
 " ---------------------}}}
 " Colors {{{
@@ -557,8 +517,8 @@ au FileType sh setlocal makeprg=shellcheck\ -fgcc\ %
 au FileType markdown setlocal makeprg=pandoc\ %\ -o\ %:r.pdf
 
 " other ideas :
-" mapping qc, ql, or Qc, Ql ? etc. to open quickfix list / location list windows
 " mapping : Fugitive
+" add shortcuts with leader key for making sessions and viminfo and restore it ?
 
 set cm=blowfish2
 " look at gpg / pgp with autocommand instead ?
@@ -583,5 +543,70 @@ au BufNewFile,BufRead *.py
 let python_highlight_all=1
 
 " ----------------------}}}
+" Archive {{{
+" -------------------------
 
+"  ---
+"  Mappings
+"  ---
+
+" Disable arrow keys
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <right> <nop>
+" nnoremap <left> <nop>
+
+" Replace C-W + hjkl by C-hjkl
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+" noremap <C-h> <C-w>h
+
+" Remap c-w s-n to esc
+"tnoremap <Esc> <C-w><S-n>
+
+"  ---
+"  Mappings - function keys
+"  ---
+
+" Toggle list characters
+" to remove cause "yol" do the same in unimpaired tpope plugin
+" nmap <F6> :set list! <CR>
+
+" Toggle spellcheck
+" to remove cause "yoz" do the same in unimpaired tpope plugin
+" nmap <F7> :setlocal spell!<CR>
+
+" Toggle highlight searches
+" to remove cause "yoh" do the same in unimpaired tpope plugin
+" nmap <F8> :set hls!<CR>
+
+"  ---
+"  Netrw
+"  ---
+
+" Open netrw at startup
+" augroup netrw
+"	autocmd!
+"	autocmd VimEnter * :Lexplore
+"	autocmd
+" augroup END
+
+"  ---
+"  Statusline
+"  ---
+
+" set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{b:git_branch}\ " statusline with functions below
+
+" " Git branch for statusline
+" function Gitbranch()
+"     " return trim(system("git -C " . expand("%:h") . " branch --show-current 2>NUL")) " windows way
+"     return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null")) " linux way
+" endfunction
+" augroup Gitget
+"     autocmd!
+"     autocmd BufEnter * let b:git_branch = Gitbranch()
+" augroup END
+
+" ----------------------}}}
 " vim: foldmethod=marker:foldmarker={{{,}}}
