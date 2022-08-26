@@ -36,20 +36,25 @@ config () {
 	fi
 }
 
-if [[ -d "$HOME/.dotfiles"  ]]; then
-	# vim specific
+config_vim () {
 	if [[ -d "$HOME/.dotfiles/vim" ]]; then
-		mkdir -p "$HOME/.vim/{view,undo,spell,pack/plugins/start}"
+		mkdir -p $HOME/.vim/{view,undo,spell,ftplugin,pack/plugins/start}
 		for i in "$HOME/.dotfiles/vim/plugins/"*; do
-			[[ -r "$HOME/.dotfiles/vim/plugins/$i" ]] && ln -sf "$HOME/.dotfiles/vim/plugins/$i" "$HOME/.vim/pack/plugins/start/$i"
+			[[ -r "$i" ]] && ln -sf "$i" "$HOME/.vim/pack/plugins/start/$(basename $i)"
+		done
+		for i in "$HOME/.dotfiles/vim/ftplugin/"*; do
+			[[ -r "$i" ]] && ln -sf "$i" "$HOME/.vim/ftplugin/$(basename $i)"
 		done
 		[[ -f "$HOME/.dotfiles/vim/vimrc" ]] && ln -sf "$HOME/.dotfiles/vim/vimrc" "$HOME/.vim/vimrc"
 	fi
+}
 
+if [[ -d "$HOME/.dotfiles"  ]]; then
 	config dunst dunstrc xdg
 	config readline inputrc xdg
 	config tmux tmux.conf xdg
 	config bash bash_aliases classic link
+	config_vim
 else
 	printf "Please clone the repository in your home directory"
 fi

@@ -1,3 +1,9 @@
+      " _ _ _____                 _                    
+  " ___(_) |___ /          __   _(_)_ __ ___  _ __ ___ 
+ " / _ \ | | |_ \   _____  \ \ / / | '_ ` _ \| '__/ __|
+" |  __/ | |___) | |_____|  \ V /| | | | | | | | | (__ 
+ " \___|_|_|____/            \_/ |_|_| |_| |_|_|  \___|
+
 "------------------------
 " Miscellaneous {{{
 " -------------------------
@@ -271,7 +277,7 @@ nnoremap <silent> ù :call ToggleNetrw()<CR>
 set showmode
 set laststatus=2 " always enable status line
 set ruler " position in %
-set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{FugitiveStatusline()} " statusline with Fugitive
+set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %y\ %{FugitiveStatusline()} " statusline with Fugitive
 
 " %< - where to truncate the line if too long
 " %0* - restore normal highlight
@@ -287,6 +293,7 @@ set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %{FugitiveStatusl
 " %c - column
 " %V - virtual column
 " %P - percentage
+" %y - filetype
 
 " ----------------------}}}
 " Tab line {{{
@@ -503,44 +510,34 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 " ----------------------}}}
-" Work in progress {{{
+" Filetype detection {{{
 " -------------------------
 
+" Terraform
+au BufNewFile,BufRead *.tf setf terraform
+" Jinja
+au BufNewFile,BufRead *.j2 setf jinja
 " Markdown
-let g:markdown_folding=1
+au BufNewFile,BufRead *.md setf markdown
 
-au BufRead,BufNewFile *.md setfiletype markdown
+" Add filetype ansible for yml in ansible repo
+" example : au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
-" linter for shell script with built-in make command with shellcheck (use
-" builtin :make % to populate quickfixlist)
-au FileType sh setlocal makeprg=shellcheck\ -fgcc\ %
-au FileType markdown setlocal makeprg=pandoc\ %\ -o\ %:r.pdf
-
-" other ideas :
-" mapping : Fugitive
-" add shortcuts with leader key for making sessions and viminfo and restore it ?
+" ----------------------}}}
+" Work in progress {{{
+" -------------------------
 
 set cm=blowfish2
 " look at gpg / pgp with autocommand instead ?
 
-" switch to insert mode when focusing on terminal window (not working)
-autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+" TODO :
+" mapping : Fugitive
+" test : add shortcuts with leader key for making sessions and viminfo and restore it ?
 
-" filetype detection
-au BufNewFile,BufRead *.tf set filetype=terraform
-au BufNewFile,BufRead *.j2 set ft=jinja
-
-" python - pep 8
-au BufNewFile,BufRead *.py
-    \set tabstop=4
-    \set softtabstop=4
-    \set shiftwidth=4
-    \set textwidth=79
-    \set expandtab
-    \set autoindent
-    \set fileformat=unix
-
-let python_highlight_all=1
+" Ansible
+" Add encrypt / decrypt function for vault
+" :!ansible-vault --vault-password-file=~/.vault_pass decrypt %
+" :!ansible-vault --vault-password-file=~/.vault_pass encrypt %
 
 " ----------------------}}}
 " Archive {{{
