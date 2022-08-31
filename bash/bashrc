@@ -154,3 +154,4 @@ fi
 export XDG_CONFIG_HOME=~/.config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export HISTFILESIZE=10000
+export HISTCONTROL=$HISTCONTROL:ignorespace

@@ -30,7 +30,7 @@ set softtabstop=-1 " TODO use value of shiftwidth
 
 " Wildmenu
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest:list,full
 set wildcharm=<C-Z>
 
 " Buffers
@@ -434,7 +434,6 @@ function! s:on_lsp_buffer_enabled() abort
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
     let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -456,7 +455,7 @@ endif
 if executable('ansible-language-server')
     au User lsp_setup call lsp#register_server({
             \ 'name': 'ansible-language-server',
-            \ 'cmd': {server_info->['ansible-language-server', 'serve']},
+            \ 'cmd': {server_info->['ansible-language-server','--stdio']},
             \ 'whitelist': ['ansible'],
             \ })
 endif
@@ -464,7 +463,7 @@ endif
 " autocomplete options
 set completeopt=menuone,noinsert,noselect,preview
 
-" asyncomplete-file registration
+" asyncomplete-file asyncomplete registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
 	    \ 'name': 'file',
 	    \ 'allowlist': ['*'],
@@ -472,7 +471,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 	    \ 'completor': function('asyncomplete#sources#file#completor')
 	    \ }))
 
-" asyncomplete-buffer registration
+" asyncomplete-buffer asyncomplete registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
 	    \ 'name': 'buffer',
 	    \ 'allowlist': ['*'],
@@ -483,7 +482,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 	    \  },
 	    \ }))
 
-" tmuxcomplete registration
+" tmuxcomplete asyncomplete registration
 let g:tmuxcomplete#asyncomplete_source_options = {
 	    \ 'name':      'tmuxcomplete',
 	    \ 'whitelist': ['*'],
