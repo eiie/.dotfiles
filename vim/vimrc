@@ -194,6 +194,7 @@ nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal and shell
 nnoremap <Leader>te :belowright terminal<cr><c-w>:resize -18<CR>
+nnoremap <Leader>Te :tab terminal<cr>
 nnoremap <Leader>sh :shell<cr>
 
 " Browse MRU files
