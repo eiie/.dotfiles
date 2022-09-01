@@ -1,14 +1,43 @@
-alias evalssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias ll='ls -lh'
-alias la='ls -lah'
+# classic
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias more=less														# less is more
+
+# editor
 alias vi='vim'
-alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
-alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
-alias pacmanexplicitinstalled='pacman -Qqem'
+
+# ls
+alias ls='ls -CF --color=auto'
+alias la='ls -A'
+alias ll='ls -alF'
+alias lt='ls --human-readable --size -1 -S --classify'
+
+# grep history
+alias gh='history | grep'
+
+# ssh-agent
+alias evalssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+
+# flameshot
+alias flameshot='flameshot gui'
+
+# git
 alias gs='git status'
 alias gc='git commit'
 alias gb='git checkout'
-alias flameshot='flameshot gui'
+alias gtl='cd $(git rev-parse --show-toplevel)'
+
+# todo list
 alias td='vi ~/Documents/todo.md'
+
+# when firefox is buggy
+alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
+
+# pacman
+alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
+alias pacmanexplicitinstalled='pacman -Qqem'
+
+# mount (replace with fstab entry)
 alias mountnas='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/osmozis /mnt/nas/'
 alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/home /mnt/home/'

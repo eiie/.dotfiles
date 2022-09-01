@@ -31,17 +31,8 @@ colors() {
 	done
 }
 
+# Source bash completion
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
-# Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
 
 use_color=true
 
@@ -90,12 +81,6 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-#alias cp="cp -i"                          # confirm before overwriting something
-#alias df='df -h'                          # human-readable sizes
-#alias free='free -m'                      # show sizes in MB
-#alias np='nano -w PKGBUILD'
-#alias more=less
-
 xhost +local:root > /dev/null 2>&1
 
 # Bash won't get SIGWINCH if another process is in the foreground.
@@ -136,9 +121,6 @@ ex ()
   fi
 }
 
-# env 
-export EDITOR=vim
-export LANG=en_US.UTF-8
 
 # Prompt
 PS1=' \[\e[0;92m\]\w \[\e[0;96m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2) \[\e[0;92m\]> \[\e[0m\]' 
@@ -151,10 +133,15 @@ then
 	stty -ixon
 fi 
 
+# Common 
+export EDITOR=vim
+export LANG=en_US.UTF-8
+
+# XDG
 export XDG_CONFIG_HOME=~/.config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # History
 export HISTFILESIZE=10000
 export HISTCONTROL=$HISTCONTROL:ignorespace:ignoredups
-export HISTTIMEFORMAT="[%F %H:%M] "
+export HISTTIMEFORMAT="[%F %H:%M]  "
