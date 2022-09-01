@@ -153,5 +153,8 @@ fi
 
 export XDG_CONFIG_HOME=~/.config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+
+# History
 export HISTFILESIZE=10000
-export HISTCONTROL=$HISTCONTROL:ignorespace
+export HISTCONTROL=$HISTCONTROL:ignorespace:ignoredups
+export HISTTIMEFORMAT="[%F %H:%M] "
