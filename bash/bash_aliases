@@ -1,8 +1,11 @@
 # classic
 alias cp="cp -i"                          # confirm before overwriting something
+alias cp="mv -i"                          # confirm before overwriting something
+alias cp="ln -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less														# less is more
+alias mkdir='mkdir -pv'
 
 # editor
 alias vi='vim'
@@ -27,6 +30,9 @@ alias gs='git status'
 alias gc='git commit'
 alias gb='git checkout'
 alias gtl='cd $(git rev-parse --show-toplevel)'
+
+# web server
+alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
 
 # todo list
 alias td='vi ~/Documents/todo.md'
