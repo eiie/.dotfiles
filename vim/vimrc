@@ -236,6 +236,13 @@ nnoremap <leader>qd :LspDocumentDiagnostics <CR>
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>:copen<cr>
 nnoremap <leader>gr yaw:silent grep -Rsi <c-r>" ./<cr><c-l>:copen<cr>
 
+" Tabs
+noremap <leader>& 1gt
+noremap <leader>é 2gt
+noremap <leader>" 3gt
+noremap <leader>' 4gt
+noremap <leader>( 5gt
+
 " ----------------------}}}
 " Netrw {{{
 " -------------------------
