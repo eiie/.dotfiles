@@ -53,6 +53,7 @@ if [[ -d "$HOME/.dotfiles"  ]]; then
 	config dunst dunstrc xdg
 	config readline inputrc xdg
 	config tmux tmux.conf xdg
+	config info infokey classic link
 	config bash bash_aliases classic link
 	config_vim
 else

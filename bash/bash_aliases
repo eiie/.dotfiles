@@ -7,9 +7,6 @@ alias free='free -m'                      # show sizes in MB
 alias more=less														# less is more
 alias mkdir='mkdir -pv'
 
-# editor
-alias vi='vim'
-
 # ls
 alias ls='ls -CF --color=auto'
 alias la='ls -A'
@@ -47,3 +44,23 @@ alias pacmanexplicitinstalled='pacman -Qqem'
 # mount (replace with fstab entry)
 alias mountnas='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/osmozis /mnt/nas/'
 alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/home /mnt/home/'
+
+# vim bindings in info command
+alias info='info --vi-keys'
+
+
+# editor
+vit()
+{
+	if [[ ! -z "$VIM_TERMINAL" ]]; then
+		if [ $# -eq 0 ]; then
+			echo "You are already inside Vim. Provide filenames as arguments"
+		else
+			readlink -f $@ | xargs printf '\033]51;["call", "Tapi_vit", ["%s"]]\007'
+		fi
+	else
+		vim $@
+	fi
+}
+alias vi='vim'
+alias vim='vit'
