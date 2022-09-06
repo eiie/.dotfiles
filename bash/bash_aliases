@@ -1,4 +1,12 @@
-# classic
+      # _ _ _____                 _ _                     
+  # ___(_) |___ /            __ _| (_) __ _ ___  ___  ___ 
+ # / _ \ | | |_ \   _____   / _` | | |/ _` / __|/ _ \/ __|
+# |  __/ | |___) | |_____| | (_| | | | (_| \__ \  __/\__ \
+ # \___|_|_|____/           \__,_|_|_|\__,_|___/\___||___/
+                                                        
+# -----------
+# classic {{{
+# -----------
 alias cp="cp -i"                          # confirm before overwriting something
 alias cp="mv -i"                          # confirm before overwriting something
 alias cp="ln -i"                          # confirm before overwriting something
@@ -7,49 +15,67 @@ alias free='free -m'                      # show sizes in MB
 alias more=less														# less is more
 alias mkdir='mkdir -pv'
 
-# ls
+# ----------- }}}
+# ls {{{
+# -----------
 alias ls='ls -CF --color=auto'
 alias la='ls -A'
 alias ll='ls -alF'
 alias lt='ls --human-readable --size -1 -S --classify'
 
-# grep history
+# ----------- }}}
+# grep history {{{
+# -----------
 alias gh='history | grep'
 
-# ssh-agent
+# ----------- }}}
+# ssh-agent {{{
+# -----------
 alias evalssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
-# flameshot
+# ----------- }}}
+# flameshot {{{
+# -----------
 alias flameshot='flameshot gui'
 
-# git
+# ----------- }}}
+# git {{{
+# -----------
 alias gs='git status'
 alias gc='git commit'
 alias gb='git checkout'
 alias gtl='cd $(git rev-parse --show-toplevel)'
 
-# web server
+# ----------- }}}
+# web server {{{
+# -----------
 alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
 
-# todo list
+# ----------- }}}
+# todo list {{{
+# -----------
 alias td='vi ~/Documents/todo.md'
 
-# when firefox is buggy
-alias killfirefox="kill $(ps aux | grep firefox$ | awk '{print $2}')"
-
-# pacman
+# ----------- }}}
+# pacman {{{
+# -----------
 alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
 alias pacmanexplicitinstalled='pacman -Qqem'
 
-# mount (replace with fstab entry)
+# ----------- }}}
+# mount {{{
+# -----------
 alias mountnas='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/osmozis /mnt/nas/'
 alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/home /mnt/home/'
 
-# vim bindings in info command
+# ----------- }}}
+# info {{{
+# -----------
 alias info='info --vi-keys'
 
-
-# editor
+# ----------- }}}
+# editor {{{
+# -----------
 vit()
 {
 	if [[ ! -z "$VIM_TERMINAL" ]]; then
@@ -64,3 +90,5 @@ vit()
 }
 alias vi='vim'
 alias vim='vit'
+
+# vim: foldmethod=marker:foldmarker={{{,}}}

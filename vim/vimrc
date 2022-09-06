@@ -673,5 +673,4 @@ augroup END
 " au InsertEnter * hi StatusLine term=none cterm=none ctermbg=0 ctermbg=3		"status line when entering insert mode
 " au InsertLeave * hi StatusLine term=none cterm=none ctermfg=0 ctermbg=2		"reset when leaving insert mode
 
-" ----------------------}}}
 " vim: foldmethod=marker:foldmarker={{{,}}}
