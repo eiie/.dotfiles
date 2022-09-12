@@ -1,7 +1,7 @@
-      " _ _ _____                 _                    
-  " ___(_) |___ /          __   _(_)_ __ ___  _ __ ___ 
+      " _ _ _____                 _
+  " ___(_) |___ /          __   _(_)_ __ ___  _ __ ___
  " / _ \ | | |_ \   _____  \ \ / / | '_ ` _ \| '__/ __|
-" |  __/ | |___) | |_____|  \ V /| | | | | | | | | (__ 
+" |  __/ | |___) | |_____|  \ V /| | | | | | | | | (__
  " \___|_|_|____/            \_/ |_|_| |_| |_|_|  \___|
 
 "------------------------
@@ -25,7 +25,7 @@ colorscheme slate
 " Indentation
 set autoindent
 set tabstop=2
-set shiftwidth=2 
+set shiftwidth=2
 set softtabstop=-1 " TODO use value of shiftwidth
 
 " Wildmenu
@@ -176,7 +176,7 @@ nnoremap èà `]
 " Go to last buffer
 nnoremap ° <c-^>
 
-" Find remap for c-] because c-$ does not work for me here 
+" Find remap for c-] because c-$ does not work for me here
 " nnoremap <c-à> <c-]>
 
 " ----------------------}}}
@@ -200,6 +200,7 @@ nnoremap <Leader>te :terminal ++curwin<cr>
 nnoremap <Leader>st :belowright terminal<cr><c-w>:resize -18<CR>
 nnoremap <Leader>tt :tab terminal<cr>
 nnoremap <Leader>sh :shell<cr>
+nnoremap <c-w>t :vertical rightbelow terminal<cr>
 
 " Browse MRU files
 nnoremap <Leader>ol :browse oldfiles<CR>
@@ -255,7 +256,7 @@ noremap <leader>( 5gt
 
 let g:netrw_banner=0		"Suppress the banner
 let g:netrw_liststyle=3		"Tree style listing
-let g:netrw_browse_split=4	"Open in previous window when netrw is used in a split 
+let g:netrw_browse_split=4	"Open in previous window when netrw is used in a split
 let g:netrw_winsize = 16	"Set netrw window size
 let g:netrw_altv=1		"Left splitting
 let g:netrw_cursor=0		"Use user's cursor line settings in netrw
@@ -288,7 +289,7 @@ nnoremap <silent> ù :call ToggleNetrw()<CR>
 " Terminal {{{
 " -------------------------
 
-" Avoid nested vim 
+" Avoid nested vim
 function! Tapi_vit(bufnum, arglist)
 	let currfile = get(a:arglist, 0, '')
 	if empty(currfile)
@@ -298,12 +299,13 @@ function! Tapi_vit(bufnum, arglist)
 endfunction
 
 " terminal window config
-autocmd TerminalWinOpen * setlocal nonu nornu 
+autocmd TerminalWinOpen * setlocal nonu nornu
 
 " ----------------------}}}
 " Status line {{{
 " -------------------------
 
+set cmdheight=0 "hide cmdline when not in use
 set showmode
 set laststatus=2 " always enable status line
 set ruler " position in %

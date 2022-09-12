@@ -126,6 +126,17 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+s ()
+{
+	tmux ls | grep "^default:"
+	if [[ $? -eq 1 ]] ; then 
+		tmux new -d -s "default" -n "default" 
+		tmux send-keys -t default:default "vim -S $HOME/.vim/terminal_session.vim" Enter
+	fi
+	tmux a -t default:default
+}
+
 # ------------- }}}
 # Prompt {{{
 # -------------

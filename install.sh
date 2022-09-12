@@ -27,7 +27,7 @@ config () {
 							[[ $config_file_type = "link" ]] && ln -sf "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file"
 							[[ $config_file_type = "file" ]] && cp "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file" ; break;;
 						[Nn]* ) echo "$config_file installation have been skipped" ; break;;
-						[Dd]* ) diff "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file" ; continue ;;
+						[Dd]* ) vim -d "$HOME/.dotfiles/$config_base_dir/$config_base_file" "$HOME/$config_dir/$config_file" ; continue ;;
 						* ) continue;
 					esac
 				done
@@ -46,6 +46,7 @@ config_vim () {
 			[[ -r "$i" ]] && ln -sf "$i" "$HOME/.vim/ftplugin/$(basename $i)"
 		done
 		[[ -f "$HOME/.dotfiles/vim/vimrc" ]] && ln -sf "$HOME/.dotfiles/vim/vimrc" "$HOME/.vim/vimrc"
+		[[ -f "$HOME/.dotfiles/vim/terminal_session.vim" ]] && cp "$HOME/.dotfiles/vim/terminal_session.vim" "$HOME/.vim/terminal_session.vim"
 	fi
 }
 
@@ -55,6 +56,7 @@ if [[ -d "$HOME/.dotfiles"  ]]; then
 	config tmux tmux.conf xdg
 	config info infokey classic link
 	config bash bash_aliases classic link
+	config bash bashrc classic file
 	config_vim
 else
 	printf "Please clone the repository in your home directory"
