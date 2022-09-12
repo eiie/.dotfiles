@@ -76,7 +76,8 @@ Some programs need to be installed to enjoy all the features:
 The installation script make a symbolic link or with absolute path or copy the file in the home folder for the following files.
 
 - .bash_aliases
-> - .bashrc
+- .bashrc
+- .infokey
 
 ### XDG ###
 
@@ -84,10 +85,11 @@ Software list :
 - dunst
 - readline
 - tmux
+- bashrc and alias
 
 The installation script make a symbolic link with absolute path or copy the file in XDG config folder : `~/.config/<config_dir>/<config_file>`.
 
-Environment variable are needed to configure the XDG folder. 
+Environment variable are needed to configure the XDG folder (included in bashrc).
 ```
 export XDG_CONFIG_HOME=~/.config
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
