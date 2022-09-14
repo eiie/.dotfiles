@@ -65,8 +65,9 @@ alias pacmanexplicitinstalled='pacman -Qqem'
 # ----------- }}}
 # mount {{{
 # -----------
-alias mountnas='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/osmozis /mnt/nas/'
-alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis //nas.osmoziswifi.com/home /mnt/home/'
+
+alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis,file_mode=0777,dir_mode=0777 //nas.osmoziswifi.com/osmozis /mnt/nas/'
+alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis,file_mode=0777,dir_mode=0777 ///nas.osmoziswifi.com/home /mnt/home/'
 
 # ----------- }}}
 # info {{{
