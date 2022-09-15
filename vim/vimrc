@@ -129,14 +129,20 @@ nnoremap Y y$
 nnoremap g= mmgg=G`m
 
 " open lists more easily
-nnoremap qc :copen<cr>
-nnoremap ql :lopen<cr>
+nnoremap qc :copen<cr><cr>
+nnoremap ql :lopen<cr><cr>
+" buffers list
+nnoremap qb :call setqflist(getbufinfo({'buflisted':1}))<cr>:copen<cr><cr>
 " jump list (:jumps)
+nnoremap qj :call setqflist(getjumplist()[0])<cr>:copen<cr><cr>
 " change list (:changes)
-" undo list (:undolist)
-" buffer list (:ls / :buffers / :files)
-" argument list (:args)
+nnoremap qm :call setqflist(map(getchangelist(bufnr())[0], {key, val -> {"bufnr": bufnr(), "col": val.col, "lnum": val.lnum }}))
 " tag list (:tags)
+nnoremap qt :call setqflist(gettagstack().items)<cr>:copen<cr><cr>
+
+" undo list (:undolist)
+" argument list (:args)
+
 " ilist & dlist
 
 " Remap c-w s-n to esc
@@ -207,7 +213,6 @@ nnoremap <Leader>ol :browse oldfiles<cr>
 
 " Buffers
 nnoremap <leader>ls :ls<cr>
-nnoremap qb :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr": v:val}'))<cr>:copen<cr><cr>
 nnoremap <leader>bd :bufdo bdelete<cr>
 
 " Switch CWD to the directory of the open buffer
