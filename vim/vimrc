@@ -194,7 +194,7 @@ nnoremap <SPACE> <Nop>
 let mapleader =" "
 
 " Edit and source vimrc shortcuts
-nnoremap <Leader>ev :tab new $MYVIMRC<cr>
+nnoremap <Leader>ev :tab new $MYVIMRC<cr><cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " Shortcut to trim blanks
@@ -624,6 +624,11 @@ augroup END
 
 " TODO :
 " mapping : Fugitive
+
+" command / find bookmarks
+" autocmd BufNewFile,BufRead *.bkm set filetype=vimbookmarks syntax=vim
+" autocmd FileType vimbookmarks map <buffer> <silent> <cr> yy:tabnew<cr>:<c-r>"<cr>
+" map <leader>bk :tabnew ~/test.bkm<cr>
 
 
 " ----------------------}}}

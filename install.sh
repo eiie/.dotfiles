@@ -57,11 +57,8 @@ if [[ -d "$HOME/.dotfiles"  ]]; then
 	config info infokey classic link
 	config bash bash_aliases classic link
 	config bash bashrc classic file
+	config bash dir_colors classic link
 	config_vim
 else
 	printf "Please clone the repository in your home directory"
 fi
-
-# TODO
-# add .bashrc
-# add. .dir_colors (move in .config)

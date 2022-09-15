@@ -73,10 +73,11 @@ Some programs need to be installed to enjoy all the features:
 
 ### Classic ###
 
-The installation script make a symbolic link or with absolute path or copy the file in the home folder for the following files.
+The installation script make a symbolic link with absolute path or copy the file in the home folder for the following files.
 
 - .bash_aliases
 - .bashrc
+- .dir_colors
 - .infokey
 
 ### XDG ###
