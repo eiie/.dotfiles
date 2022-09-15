@@ -89,10 +89,10 @@ inoremap <left> <nop>
 map Q <nop>
 
 " Resize window with arrows
-nnoremap <Up>    :resize -2<CR>
-nnoremap <Down>  :resize +2<CR>
-nnoremap <Left>  :vertical resize -2<CR>
-nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up>    :resize -2<cr>
+nnoremap <Down>  :resize +2<cr>
+nnoremap <Left>  :vertical resize -2<cr>
+nnoremap <Right> :vertical resize +2<cr>
 
 " j and k occur on display lines instead of real lines
 nnoremap j gj
@@ -147,7 +147,7 @@ tnoremap <Esc> <C-w><S-n>
 " -------------------------
 
 " Presentation mode (replace this with Goyo plugin ?)
-nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <CR> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <CR>
+nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler! <cr> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<cr> :execute 'set laststatus=' . (&laststatus ==# 0 ? 2 : 0) <cr>
 
 " ----------------------}}}
 " Mappings - french azerty specific {{{
@@ -197,16 +197,18 @@ nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal and shell
 nnoremap <Leader>te :terminal ++curwin<cr>
-nnoremap <Leader>st :belowright terminal<cr><c-w>:resize -18<CR>
+nnoremap <Leader>st :belowright terminal<cr><c-w>:resize 12<cr>
 nnoremap <Leader>tt :tab terminal<cr>
 nnoremap <Leader>sh :shell<cr>
 nnoremap <c-w>t :vertical rightbelow terminal<cr>
 
 " Browse MRU files
-nnoremap <Leader>ol :browse oldfiles<CR>
+nnoremap <Leader>ol :browse oldfiles<cr>
 
-" List and chosse buffer
-nnoremap <leader>ls :ls<CR>:b<Space>
+" Buffers
+nnoremap <leader>ls :ls<cr>
+nnoremap qb :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr": v:val}'))<cr>:copen<cr><cr>
+nnoremap <leader>bd :bufdo bdelete<cr>
 
 " Switch CWD to the directory of the open buffer
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -221,22 +223,23 @@ xnoremap <leader>p "0p
 nnoremap <leader>p "0p
 
 " Git mapping (for fugitive tpope plugin)
-nnoremap <leader>gs :G <CR>
-nnoremap <leader>gc :Git commit <CR>
-nnoremap <leader>gp :Git push <CR>
-nnoremap <leader>gl :GV <CR>
+nnoremap <leader>gs :G <cr>
+nnoremap <leader>gc :Git commit <cr>
+nnoremap <leader>gp :Git push <cr>
+nnoremap <leader>gl :GV <cr>
 
 " Make mapping
-nnoremap <leader>ma :make <CR> <CR>
+nnoremap <leader>ma :make <cr> <cr>
 
-" Date in french format
-nnoremap <leader>da :pu=strftime('%d/%m/%Y')<CR>
+" Date and time
+nnoremap <leader>da :put=strftime('%d/%m/%Y')<cr>
+nnoremap <leader>ho :put=strftime('%H:%M')<cr>
 
 " Lists
-nnoremap <leader>ql :lopen <CR>
-nnoremap <leader>qc :copen <CR>
-nnoremap <leader>qq :copen <CR>
-nnoremap <leader>qd :LspDocumentDiagnostics <CR>
+nnoremap <leader>ql :lopen <cr>
+nnoremap <leader>qc :copen <cr>
+nnoremap <leader>qq :copen <cr>
+nnoremap <leader>qd :LspDocumentDiagnostics <cr>
 
 " Grep
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>:copen<cr>
@@ -250,7 +253,7 @@ noremap <leader>" 3gt
 noremap <leader>' 4gt
 noremap <leader>( 5gt
 
-" Ansible-vault encrypt decrypt 
+" Ansible-vault encrypt decrypt
 nnoremap <leader>ivd :!ansible-vault decrypt --vault-password-file=~/ansible-vault-integration.txt %<cr>
 nnoremap <leader>ive :!ansible-vault encrypt --vault-password-file=~/ansible-vault-integration.txt %<cr>
 nnoremap <leader>vvd :!ansible-vault decrypt --vault-password-file=~/ansible-vault-preprod.txt %<cr>
@@ -293,7 +296,7 @@ function! ToggleNetrw()
 endfunction
 
 " Maping toggle netrw
-nnoremap <silent> ù :call ToggleNetrw()<CR>
+nnoremap <silent> ù :call ToggleNetrw()<cr>
 
 " ----------------------}}}
 " Terminal {{{
@@ -404,6 +407,9 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,term
 " Colors {{{
 " -------------------------
 
+" Normal
+highlight Normal ctermfg=15 ctermbg=0
+
 " StatusLine
 highlight StatusLine		term=none cterm=none ctermfg=0 ctermbg=2	"status line of current window
 highlight StatusLineNC		term=none cterm=none ctermfg=2 ctermbg=8	"status lines of not-current windows
@@ -424,11 +430,11 @@ highlight Wildmenu      	term=none cterm=none ctermfg=2 ctermbg=8	" wildmenu
 highlight ColorColumn   	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Terminal
-" highlight StatusLineTerm	term=none cterm=none ctermfg=0 ctermbg=4	"status line of current window
-" highlight StatusLineTermNC	term=none cterm=none ctermfg=4 ctermbg=8	"status lines of not-current windows
-" highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
+" highlight StatusLineTerm	term=none cterm=none ctermfg=22 ctermbg=2	"status line of current window
+" highlight StatusLineTermNC	term=none cterm=none ctermfg=8 ctermbg=0	"status lines of not-current windows
+highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
 
-highlight StatusLineTerm	term=none cterm=none ctermfg=2 ctermbg=0	"status line of current window
+highlight StatusLineTerm	term=none cterm=none ctermfg=22 ctermbg=0	"status line of current window
 highlight StatusLineTermNC	term=none cterm=none ctermfg=8 ctermbg=0	"status lines of not-current windows
 highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
 
@@ -451,6 +457,7 @@ highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollb
 
 " Quickfix list
 highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
+
 "0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
 " ----------------------}}}
@@ -553,7 +560,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Undotree
-nmap <F8> : UndotreeToggle<CR>
+nmap <F8> : UndotreeToggle<cr>
 
 " ----------------------}}}
 " Filetype {{{
@@ -640,15 +647,15 @@ augroup END
 
 " Toggle list characters
 " to remove cause "yol" do the same in unimpaired tpope plugin
-" nmap <F6> :set list! <CR>
+" nmap <F6> :set list! <cr>
 
 " Toggle spellcheck
 " to remove cause "yoz" do the same in unimpaired tpope plugin
-" nmap <F7> :setlocal spell!<CR>
+" nmap <F7> :setlocal spell!<cr>
 
 " Toggle highlight searches
 " to remove cause "yoh" do the same in unimpaired tpope plugin
-" nmap <F8> :set hls!<CR>
+" nmap <F8> :set hls!<cr>
 
 "  ---
 "  Netrw
