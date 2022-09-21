@@ -55,6 +55,7 @@ alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
 # todo list {{{
 # -----------
 alias td='vi ~/Documents/todo.md'
+alias t='vi ~/t'
 
 # ----------- }}}
 # pacman {{{

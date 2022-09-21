@@ -86,3 +86,7 @@
 	path = vim/plugins/tabular
 	url = https://github.com/godlygeek/tabular.git
 	ignore = dirty
+[submodule "vim/plugins/undotree"]
+	path = vim/plugins/undotree
+	url = https://github.com/mbbill/undotree.git
+	ignore = dirty
