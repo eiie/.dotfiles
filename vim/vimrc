@@ -323,7 +323,6 @@ autocmd TerminalWinOpen * setlocal nonu nornu
 " Status line {{{
 " -------------------------
 
-set cmdheight=0 "hide cmdline when not in use
 set showmode
 set laststatus=2 " always enable status line
 set ruler " position in %
@@ -435,11 +434,7 @@ highlight Wildmenu      	term=none cterm=none ctermfg=2 ctermbg=8	" wildmenu
 highlight ColorColumn   	term=none cterm=none ctermfg=15 ctermbg=8	" cursor column
 
 " Terminal
-" highlight StatusLineTerm	term=none cterm=none ctermfg=22 ctermbg=2	"status line of current window
-" highlight StatusLineTermNC	term=none cterm=none ctermfg=8 ctermbg=0	"status lines of not-current windows
-highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
-
-highlight StatusLineTerm	term=none cterm=none ctermfg=22 ctermbg=0	"status line of current window
+highlight StatusLineTerm	term=none cterm=none ctermfg=5 ctermbg=0	"status line of current window
 highlight StatusLineTermNC	term=none cterm=none ctermfg=8 ctermbg=0	"status lines of not-current windows
 highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
 
@@ -630,7 +625,6 @@ augroup END
 " autocmd FileType vimbookmarks map <buffer> <silent> <cr> yy:tabnew<cr>:<c-r>"<cr>
 " map <leader>bk :tabnew ~/test.bkm<cr>
 
-
 " ----------------------}}}
 " Archive {{{
 " -------------------------
@@ -696,5 +690,6 @@ augroup END
 
 " au InsertEnter * hi StatusLine term=none cterm=none ctermbg=0 ctermbg=3		"status line when entering insert mode
 " au InsertLeave * hi StatusLine term=none cterm=none ctermfg=0 ctermbg=2		"reset when leaving insert mode
+
 
 " vim: foldmethod=marker:foldmarker={{{,}}}
