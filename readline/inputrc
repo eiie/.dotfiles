@@ -7,3 +7,4 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set visible-stats on
 set enable-keypad on
+set bell-style none
