@@ -132,13 +132,13 @@ nnoremap g= mmgg=G`m
 nnoremap qc :copen<cr><cr>
 nnoremap ql :lopen<cr><cr>
 " buffers list
-nnoremap qb :call setqflist(getbufinfo({'buflisted':1}))<cr>:copen<cr><cr>
+nnoremap qb :call setqflist(getbufinfo({'buflisted':1}))<cr>:copen<cr>
 " jump list (:jumps)
-nnoremap qj :call setqflist(getjumplist()[0])<cr>:copen<cr><cr>
+nnoremap qj :call setqflist(getjumplist()[0])<cr>:copen<cr>
 " change list (:changes)
-nnoremap qm :call setqflist(map(getchangelist(bufnr())[0], {key, val -> {"bufnr": bufnr(), "col": val.col, "lnum": val.lnum }}))
+nnoremap qm :call setqflist(map(getchangelist(bufnr())[0], {key, val -> {"bufnr": bufnr(), "col": val.col, "lnum": val.lnum }}))<cr>:copen<cr>
 " tag list (:tags)
-nnoremap qt :call setqflist(gettagstack().items)<cr>:copen<cr><cr>
+nnoremap qt :call setqflist(gettagstack().items)<cr>:copen<cr>
 
 " undo list (:undolist)
 " argument list (:args)
