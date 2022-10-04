@@ -249,6 +249,7 @@ nnoremap <leader>qd :LspDocumentDiagnostics <cr>
 " Grep
 nnoremap <leader>vg yaw:vimgrep <c-r>" **<cr>:copen<cr>
 nnoremap <leader>gr yaw:silent grep -rsi <c-r>" ./<cr><c-l>:copen<cr>
+nnoremap <leader>Gr yaW:silent grep -rsi <c-r>" ./<cr><c-l>:copen<cr>
 
 " Tabs
 nnoremap <c-w><Leader>& 1gt
