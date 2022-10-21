@@ -30,7 +30,8 @@ set softtabstop=-1 " TODO use value of shiftwidth
 
 " Wildmenu
 set wildmenu
-set wildmode=longest:list,full
+set wildmode=longest:list
+",full
 set wildcharm=<C-Z>
 
 " Buffers
@@ -140,8 +141,9 @@ nnoremap qm :call setqflist(map(getchangelist(bufnr())[0], {key, val -> {"bufnr"
 " tag list (:tags)
 nnoremap qt :call setqflist(gettagstack().items)<cr>:copen<cr>
 
-" undo list (:undolist)
+" undo list (:undolist) => undotree
 " argument list (:args)
+" marks list (:marks)
 
 " ilist & dlist
 
@@ -559,6 +561,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 " Undotree
 nmap <F8> : UndotreeToggle<cr>

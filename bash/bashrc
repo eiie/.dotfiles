@@ -74,8 +74,6 @@ if ${use_color} ; then
 
 	alias ls='ls --color=auto'
 	alias grep='grep --colour=auto'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
 else
 	if [[ ${EUID} == 0 ]] ; then
 		# show root@ when we don't have colors
@@ -175,8 +173,16 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 # ------------- }}}
 # History {{{
 # -------------
-export HISTFILESIZE=10000
+export HISTFILE=$HOME/.bash_history
+export HISTSIZE=10000
+export HISTFILESIZE=100000
 export HISTCONTROL=$HISTCONTROL:ignorespace:ignoredups
 export HISTTIMEFORMAT="[%F %H:%M]  "
+
+# ------------- }}}
+# Misc {{{
+# -------------
+
+xset dpms 12000 12000 12000 
 
 # vim: foldmethod=marker:foldmarker={{{,}}}
