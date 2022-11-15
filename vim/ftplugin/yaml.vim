@@ -1,0 +1,1 @@
+iabbrev {{ "{{  }}"<esc>F{li

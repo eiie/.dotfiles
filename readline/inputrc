@@ -8,3 +8,4 @@ set show-all-if-unmodified on
 set visible-stats on
 set enable-keypad on
 set bell-style none
+set echo-control-characters off
