@@ -87,6 +87,15 @@ alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis,fi
 alias info='info --vi-keys'
 
 # ----------- }}}
+# colors {{{
+# -----------
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+export LESS='-R --use-color -Dd+r$Du+b'
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
+# ----------- }}}
 # editor {{{
 # -----------
 vit()
