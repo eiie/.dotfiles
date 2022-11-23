@@ -113,4 +113,9 @@ vit()
 alias vi='vim'
 alias vim='vit'
 
+# ----------- }}}
+# sfeed {{{
+# -----------
+alias rss="sfeed_update && sfeed_curses $HOME/.sfeed/feeds/*"
+
 # vim: foldmethod=marker:foldmarker={{{,}}}
