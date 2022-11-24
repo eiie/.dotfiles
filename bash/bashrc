@@ -147,7 +147,7 @@ vs () {
 # ------------- }}}
 # Prompt {{{
 # -------------
-PS1=' \[\e[0;92m\]\w \[\e[0;96m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2) \[\e[0;92m\]> \[\e[0m\]'
+PS1=' \[\e[0;92m\]\w \[\e[0;96m\]$(git branch 2>/dev/null | grep --color=never '"'"'^*'"'"' | colrm 1 2) \[\e[0;92m\]> \[\e[0m\]'
 
 # ------------- }}}
 # Source {{{
