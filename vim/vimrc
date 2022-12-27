@@ -236,6 +236,8 @@ nnoremap <leader>gs :G <cr>
 nnoremap <leader>gc :Git commit <cr>
 nnoremap <leader>gp :Git push <cr>
 nnoremap <leader>gl :GV <cr>
+nnoremap <leader>gg yaw:silent Ggrep <c-r>"<cr>:copen<cr>
+nnoremap <leader>gG yaW:silent Ggrep <c-r>"<cr>:copen<cr>
 
 " Make mapping
 nnoremap <leader>ma :make <cr> <cr>
