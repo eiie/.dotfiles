@@ -418,6 +418,8 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,term
 " Colors {{{
 " -------------------------
 
+set background=light
+
 " Normal
 highlight Normal ctermfg=15 ctermbg=0
 
