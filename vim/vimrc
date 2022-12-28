@@ -206,11 +206,11 @@ nnoremap <Leader><Leader><space> :%s/\s\+$//e<cr>
 nnoremap <Leader><Leader><tab> :%s/<space><tab>/<tab>/gc<cr>
 
 " Shortcuts for the terminal and shell
-nnoremap <Leader>te :terminal ++curwin<cr>
-nnoremap <Leader>st :belowright terminal<cr><c-w>:resize 12<cr>
-nnoremap <Leader>tt :tab terminal<cr>
+nnoremap <silent> <Leader>te :terminal ++curwin<cr>
+nnoremap <silent> <Leader>st :belowright terminal<cr><c-w>:resize 12<cr>
+nnoremap <silent> <Leader>tt :tab terminal<cr>
 nnoremap <Leader>sh :shell<cr>
-nnoremap <c-w>t :vertical rightbelow terminal<cr>
+nnoremap <silent> <c-w>t :vertical rightbelow terminal<cr>
 
 " Browse MRU files
 nnoremap <Leader>ol :browse oldfiles<cr>
