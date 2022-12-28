@@ -38,7 +38,7 @@ config () {
 
 config_vim () {
 	if [[ -d "$HOME/.dotfiles/vim" ]]; then
-		mkdir -p $HOME/.vim/{view,undo,spell,ftplugin,pack/plugins/start}
+		mkdir -p $HOME/.vim/{view,undo,spell,session,ftplugin,pack/plugins/start}
 		for i in "$HOME/.dotfiles/vim/plugins/"*; do
 			[[ -r "$i" ]] && ln -sf "$i" "$HOME/.vim/pack/plugins/start/$(basename $i)"
 		done
