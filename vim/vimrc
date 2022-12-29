@@ -336,9 +336,23 @@ autocmd TerminalWinOpen * setlocal nonu nornu
 set showmode
 set laststatus=2 " always enable status line
 set ruler " position in %
-set statusline=%<\%0*\ %n\ %F\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P\ %y\ %{FugitiveStatusline()} " statusline with Fugitive
 
-" %< - where to truncate the line if too long
+set statusline=
+set statusline+=%<
+set statusline+=%#GitStatusLine#
+set statusline+=\ %n
+set statusline+=\ %0*
+set statusline+=\ %F
+set statusline+=\ %0*
+set statusline+=\ %h
+set statusline+=%m
+set statusline+=%r
+set statusline+=%=
+set statusline+=(%l/%L,%c%V)
+set statusline+=\ %P
+set statusline+=\ %y
+set statusline+=\ %#GitStatusLine#\ %{FugitiveStatusline()}
+
 " %0* - restore normal highlight
 " %n - buffer number
 " %F - buffer name (path to a file, or something)
@@ -471,6 +485,9 @@ highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollb
 
 " Quickfix list
 highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
+
+" GitStatusLine
+highlight GitStatusLine		term=none cterm=none ctermbg=0 ctermfg=2	"git status line
 
 "0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
