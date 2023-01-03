@@ -12,8 +12,8 @@ alias mv="mv -i"                          # confirm before overwriting something
 alias ln="ln -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias more=less														# less is more
-alias mkdir='mkdir -pv'
+alias more=less                           # less is more
+alias mkdir='mkdir -pv'                   # parent and verbose
 
 # ----------- }}}
 # ls {{{
