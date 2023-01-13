@@ -90,3 +90,7 @@
 	path = vim/plugins/undotree
 	url = https://github.com/mbbill/undotree.git
 	ignore = dirty
+[submodule "vim/plugins/vim-ansible"]
+	path = vim/plugins/vim-ansible
+	url = https://github.com/pearofducks/ansible-vim.git
+	ignore = dirty
