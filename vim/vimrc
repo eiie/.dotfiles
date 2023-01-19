@@ -28,6 +28,9 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=-1 " TODO use value of shiftwidth
 
+" Convert tab to space
+set expandtab
+
 " Wildmenu
 set wildmenu
 set wildmode=longest:list
@@ -74,6 +77,9 @@ set cursorline
 " Cursor can move freely in visual block mode
 set virtualedit=block
 
+" Autocomplete options
+set completeopt=menuone,noinsert,noselect,preview
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
@@ -89,7 +95,7 @@ inoremap <right> <nop>
 inoremap <left> <nop>
 
 " Disable ex mode mapping
-map Q <nop>
+map Q gq
 
 " Resize window with arrows
 nnoremap <Up>    :resize -2<cr>
@@ -288,6 +294,8 @@ let g:netrw_browse_split=4	"Open in previous window when netrw is used in a spli
 let g:netrw_winsize = 16	"Set netrw window size
 let g:netrw_altv=1		"Left splitting
 let g:netrw_cursor=0		"Use user's cursor line settings in netrw
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' "hide dotfiles (gh to show them)
+hi! link netrwMarkFile Search "highlight  marked files
 
 " Function toggle netrw
 let g:NetrwIsOpen=0
@@ -540,9 +548,6 @@ if executable('ansible-language-server')
             \ 'whitelist': ['ansible'],
             \ })
 endif
-
-" autocomplete options
-set completeopt=menuone,noinsert,noselect,preview
 
 " asyncomplete-file asyncomplete registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
