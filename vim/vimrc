@@ -80,6 +80,9 @@ set virtualedit=block
 " Autocomplete options
 set completeopt=menuone,noinsert,noselect,preview
 
+" Disable mouse
+set mouse=""
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
