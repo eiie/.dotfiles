@@ -10,10 +10,6 @@
 	path = vim/plugins/asyncomplete-file
 	url = https://github.com/prabirshrestha/asyncomplete-file.vim.git
 	ignore = dirty
-[submodule "vim/plugins/asyncomplete-ultisnips"]
-	path = vim/plugins/asyncomplete-ultisnips
-	url = https://github.com/prabirshrestha/asyncomplete-ultisnips.vim.git
-	ignore = dirty
 [submodule "vim/plugins/asyncomplete"]
 	path = vim/plugins/asyncomplete
 	url = https://github.com/prabirshrestha/asyncomplete.vim.git
@@ -29,10 +25,6 @@
 [submodule "vim/plugins/tmux-complete"]
 	path = vim/plugins/tmux-complete
 	url = https://github.com/wellle/tmux-complete.vim.git
-	ignore = dirty
-[submodule "vim/plugins/ultisnips"]
-	path = vim/plugins/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
 	ignore = dirty
 [submodule "vim/plugins/fugitive"]
 	path = vim/plugins/fugitive
@@ -93,4 +85,12 @@
 [submodule "vim/plugins/vim-ansible"]
 	path = vim/plugins/vim-ansible
 	url = https://github.com/pearofducks/ansible-vim.git
+	ignore = dirty
+[submodule "vim/plugins/vim-vsnip-integ"]
+	path = vim/plugins/vim-vsnip-integ
+	url = https://github.com/hrsh7th/vim-vsnip-integ.git
+	ignore = dirty
+[submodule "vim/plugins/vim-vsnip"]
+	path = vim/plugins/vim-vsnip
+	url = https://github.com/hrsh7th/vim-vsnip.git
 	ignore = dirty
