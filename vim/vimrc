@@ -507,6 +507,8 @@ highlight GitStatusLine		term=none cterm=none ctermbg=0 ctermfg=2	"git status li
 " Plugins (configuration and mappings) {{{
 " -------------------------
 
+" lsp {{{
+
 function! s:on_lsp_buffer_enabled() abort
 	setlocal omnifunc=lsp#complete
 	setlocal signcolumn=number
@@ -535,6 +537,8 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+"}}}
+" lsp server {{{
 " terraform lsp server configuration
 if executable('terraform-ls')
     au User lsp_setup call lsp#register_server({
@@ -549,9 +553,11 @@ if executable('ansible-language-server')
     au User lsp_setup call lsp#register_server({
             \ 'name': 'ansible-language-server',
             \ 'cmd': {server_info->['ansible-language-server','--stdio']},
-            \ 'whitelist': ['ansible'],
+            \ 'whitelist': ['yaml.ansible'],
             \ })
 endif
+"}}}
+" asyncomplete regsitration {{{
 
 " asyncomplete-file asyncomplete registration
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
@@ -585,8 +591,9 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 	    \     'truncate':        0
 	    \     }
 	    \ }
+"}}}
+" vsnip {{{
 
-" vsnip
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -612,9 +619,11 @@ xmap        S   <Plug>(vsnip-cut-text)
 " let g:vsnip_filetypes = {}
 " let g:vsnip_filetypes.javascriptreact = ['javascript']
 " let g:vsnip_filetypes.typescriptreact = ['typescript']
-
+"}}}
+" other {{{
 " Undotree
 nmap <F8> : UndotreeToggle<cr>
+"}}}
 
 " ----------------------}}}
 " Filetype {{{
