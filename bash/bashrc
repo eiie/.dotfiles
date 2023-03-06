@@ -144,6 +144,15 @@ vs () {
 	vim -S $HOME/.vim/terminal_session.vim
 }
 
+# mans
+
+mans ()
+  if [ $# -eq 2 ]; then
+    man "$1" | col -bx | sed -n "/^ *$2/,/^$/p"
+  else
+    man "$1" | col -bx | sed -n "/^DESCRIPTION/,/^$/p"
+  fi
+
 # ------------- }}}
 # Prompt {{{
 # -------------

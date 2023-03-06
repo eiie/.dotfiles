@@ -31,11 +31,12 @@ set softtabstop=-1 " TODO use value of shiftwidth
 " Convert tab to space
 set expandtab
 
-" Wildmenu
+" Wildmenu / wildmode
 set wildmenu
 set wildmode=longest:list
 ",full
 set wildcharm=<C-Z>
+set wildignorecase " Ignore case in wildmode
 
 " Buffers
 set hidden " buffers can be hidden despite being modified
@@ -43,7 +44,7 @@ set hidden " buffers can be hidden despite being modified
 " Search
 set hlsearch " Highlight searches
 set incsearch " Start the search when typing
-set ignorecase " Ignore case whe searching
+set ignorecase " Ignore case when searching
 set smartcase " Override ignorecase when search an uppercase character
 
 " Highlight matching parenthesis
@@ -616,8 +617,8 @@ nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 
 " If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
-" let g:vsnip_filetypes = {}
-" let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.yaml = ['jinja2']
 " let g:vsnip_filetypes.typescriptreact = ['typescript']
 "}}}
 " other {{{
