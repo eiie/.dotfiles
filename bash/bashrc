@@ -153,6 +153,33 @@ mans ()
     man "$1" | col -bx | sed -n "/^DESCRIPTION/,/^$/p"
   fi
 
+compare_vault(){
+  continue="true"
+  if [[ "$#" -ne 3 ]]
+  then
+    echo "Usage: compare_vault <vault1> <vault2> <password-file>"
+    continue="false"
+  fi
+  if [[ $continue == "true" ]]
+  then
+    firstfile=$1
+    secondfile=$2
+    passwordfile=$3
+
+    a=$(ansible-vault view --vault-password-file $3 $1)
+    b=$(ansible-vault view --vault-password-file $3 $2)
+
+    if [[ $a == $b ]]
+    then
+      echo "Vault are the same"
+    else
+      echo "Vault are different"
+    fi
+    unset a
+    unset b
+  fi
+}
+
 # ------------- }}}
 # Prompt {{{
 # -------------
@@ -197,7 +224,7 @@ export HISTTIMEFORMAT="[%F %H:%M]  "
 # Misc {{{
 # -------------
 
-xset dpms 12000 12000 12000 
+xset dpms 12000 12000 12000
 
 # ------------- }}}
 # sfeed {{{
