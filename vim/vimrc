@@ -119,9 +119,25 @@ nnoremap gk k
 cnoremap <up> <nop>
 cnoremap <down> <nop>
 
-" Make <C-p> and <C-n> filter the command history
-cnoremap <C-p> <up>
-cnoremap <C-n> <down>
+" Emacs-style editing on the command-line: >
+" start of line
+cnoremap <C-A>		<Home>
+" back one character
+cnoremap <C-B>		<Left>
+" delete character under cursor
+cnoremap <C-D>		<Del>
+" end of line
+cnoremap <C-E>		<End>
+" forward one character
+cnoremap <C-F>		<Right>
+" recall newer command-line
+cnoremap <C-N>		<Down>
+" recall previous (older) command-line
+cnoremap <C-P>		<Up>
+" back one word
+cnoremap <Esc><C-B>	<S-Left>
+" forward one word
+cnoremap <Esc><C-F>	<S-Right>
 
 " Keep selection in select mode after shifting
 vnoremap > >gv
@@ -161,6 +177,10 @@ nnoremap qt :call setqflist(gettagstack().items)<cr>:copen<cr>
 
 " Remap c-w s-n to esc
 tnoremap <Esc> <C-w><S-n>
+
+" Better scroll in insert mode
+inoremap <C-E> <C-X><C-E>
+inoremap <C-Y> <C-X><C-Y>
 
 " ----------------------}}}
 " Mappings - function keys {{{
