@@ -653,15 +653,16 @@ nmap <F8> : UndotreeToggle<cr>
 " Filetype {{{
 " -------------------------
 
-" Terraform
-au BufNewFile,BufRead *.tf setf terraform
-" Jinja
-au BufNewFile,BufRead *.j2 setf jinja
-" Markdown
-au BufNewFile,BufRead *.md setf markdown
-
-" GPG
-au BufNewFile,BufRead *.gpg setf gpg
+augroup filetypedetect
+  " Terraform
+  au BufNewFile,BufRead *.tf setf terraform
+  " Jinja
+  au BufNewFile,BufRead *.j2 setf jinja
+  " Markdown
+  au BufNewFile,BufRead *.md setf markdown
+  " GPG
+  au BufNewFile,BufRead *.gpg setf gpg
+augroup END
 
 " Add filetype ansible for yml in ansible repo
 " example : au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
@@ -711,6 +712,9 @@ augroup END
 " autocmd BufNewFile,BufRead *.bkm set filetype=vimbookmarks syntax=vim
 " autocmd FileType vimbookmarks map <buffer> <silent> <cr> yy:tabnew<cr>:<c-r>"<cr>
 " map <leader>bk :tabnew ~/test.bkm<cr>
+
+" When starting to edit a new file, you could make Vim insert a skeleton:
+"         :autocmd BufNewFile *.[ch]  0read ~/skeletons/skel.c
 
 " ----------------------}}}
 " Archive {{{
