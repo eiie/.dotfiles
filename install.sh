@@ -46,6 +46,7 @@ config_vim () {
 			[[ -r "$i" ]] && ln -sf "$i" "$HOME/.vim/ftplugin/$(basename $i)"
 		done
 		[[ -f "$HOME/.dotfiles/vim/vimrc" ]] && ln -sf "$HOME/.dotfiles/vim/vimrc" "$HOME/.vim/vimrc"
+		[[ -f "$HOME/.dotfiles/vim/abbrev" ]] && ln -sf "$HOME/.dotfiles/vim/abbrev" "$HOME/.vim/abbrev"
 		[[ -f "$HOME/.dotfiles/vim/terminal_session.vim" ]] && cp "$HOME/.dotfiles/vim/terminal_session.vim" "$HOME/.vim/terminal_session.vim"
 	fi
 }

@@ -84,6 +84,9 @@ set completeopt=menuone,noinsert,noselect,preview
 " Disable mouse
 set mouse=""
 
+" source abbreviations file
+source $HOME/.vim/abbrev
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
