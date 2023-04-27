@@ -50,14 +50,14 @@ set smartcase " Override ignorecase when search an uppercase character
 " Highlight matching parenthesis
 set showmatch
 
-" Supress sounds
+" Suppress sounds
 set novisualbell
 set noerrorbells
 
 " Encoding
 set encoding=UTF-8
 
-" List chararacters
+" List characters
 set listchars=tab:>-,eol:<,nbsp:%,trail:·
 
 " Fuzzy finder
@@ -71,6 +71,7 @@ set textwidth=0
 
 " Spell
 set spelllang=en,fr
+set spellsuggest=20
 
 " Set CursorLine to display CursorLineNR color
 set cursorline
