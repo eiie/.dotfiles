@@ -322,7 +322,7 @@ nnoremap <leader>ou :!firefox <c-r><c-a><cr>
 
 let g:netrw_banner=0		"Suppress the banner
 let g:netrw_liststyle=3		"Tree style listing
-let g:netrw_browse_split=4	"Open in previous window when netrw is used in a split
+let g:netrw_browse_split=0	"Open in the same window
 let g:netrw_winsize = 16	"Set netrw window size
 let g:netrw_altv=1		"Left splitting
 let g:netrw_cursor=0		"Use user's cursor line settings in netrw
@@ -340,10 +340,12 @@ function! ToggleNetrw()
 	    endif
 	    let i-=1
 	endwhile
-	let g:NetrwIsOpen=0
+	let g:NetrwIsOpen=0 "Open in the same window
+  let g:netrw_browse_split=0
 	silent :hi CursorLine term=none cterm=none ctermbg=none ctermfg=none
     else
 	let g:NetrwIsOpen=1
+  let g:netrw_browse_split=4 "Open in previous window when netrw is used in a split
 	silent Vexplore"! for right side
 	silent :hi CursorLine term=none cterm=none ctermbg=8
 	silent :setlocal cursorline
@@ -352,6 +354,13 @@ endfunction
 
 " Maping toggle netrw
 nnoremap <silent> ù :call ToggleNetrw()<cr>
+
+" Start vim on current directory
+augroup VimStartup
+ au!
+ au VimEnter * if expand("%") == "" | e . | endif
+augroup END
+
 
 " ----------------------}}}
 " Terminal {{{
