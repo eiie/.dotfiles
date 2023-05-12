@@ -221,12 +221,6 @@ export HISTCONTROL=$HISTCONTROL:ignorespace:ignoredups
 export HISTTIMEFORMAT="[%F %H:%M]  "
 
 # ------------- }}}
-# Misc {{{
-# -------------
-
-xset dpms 12000 12000 12000
-
-# ------------- }}}
 # sfeed {{{
 # -------------
 
