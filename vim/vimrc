@@ -314,7 +314,7 @@ nnoremap <leader>ss :mksession! $HOME/.vim/session/
 nnoremap <leader>sl :source $HOME/.vim/session/
 
 " open url
-nnoremap <leader>ou :!firefox <c-r><c-a><cr>
+nnoremap <leader>ou :!firefox <c-r><c-a><cr><cr>
 
 " ----------------------}}}
 " Netrw {{{
