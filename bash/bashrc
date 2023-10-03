@@ -180,6 +180,10 @@ compare_vault(){
   fi
 }
 
+rdp(){
+  e=$1 ; xfreerdp /v:$(pass show $e | grep url | cut -d ' ' -f 2) /u:$(pass show $e | grep username | cut -d ' ' -f 2) /p:$(pass $e | sed 1q) /dynamic-resolution +clipboard
+}
+
 # ------------- }}}
 # Prompt {{{
 # -------------
