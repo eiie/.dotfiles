@@ -231,4 +231,16 @@ export HISTTIMEFORMAT="[%F %H:%M]  "
 export SFEED_URL_FILE="$HOME"/.sfeed/urls
 [ -f "$SFEED_URL_FILE" ] || touch "$SFEED_URL_FILE"
 
+# ------------- }}}
+# Ansible  {{{
+# -------------
+# in ansible.cfg instead of here ?
+
+export ANSIBLE_CHECK_MODE_MARKERS="True"
+export ANSIBLE_SHOW_TASK_PATH_ON_FAILURE="True"
+export ANSIBLE_CALLBACK_RESULT_FORMAT="yaml"
+export ANSIBLE_DISPLAY_OK_HOSTS="False"
+export ANSIBLE_DISPLAY_SKIPPED_HOSTS="False"
+export ANSIBLE_FORCE_COLOR="True"
+
 # vim: foldmethod=marker:foldmarker={{{,}}}
