@@ -266,9 +266,9 @@ xnoremap <leader>p "0p
 nnoremap <leader>p "0p
 
 " Git mapping (for fugitive tpope plugin)
-nnoremap <leader>gs :G <cr>
-nnoremap <leader>gc :Git commit -v -q <cr>
-nnoremap <leader>gd :Git diff <cr>
+nnoremap <leader>gs :vertical G <cr>
+nnoremap <leader>gc :vertical Git commit -v -q <cr>
+nnoremap <leader>gd :vertical Git diff <cr>
 nnoremap <leader>gp :Git push <cr>
 nnoremap <leader>gl :GV <cr>
 nnoremap <leader>gg yaw:silent Ggrep <c-r>"<cr>:copen<cr>
