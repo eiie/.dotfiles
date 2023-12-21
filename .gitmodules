@@ -97,3 +97,4 @@
 [submodule "vim/plugins/vim-repeat"]
 	path = vim/plugins/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+	ignore = dirty
