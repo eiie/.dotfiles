@@ -88,6 +88,9 @@ set mouse=""
 " source abbreviations file
 source $HOME/.vim/abbrev
 
+" suffixesadd (to use gf with dokuwiki links)
+set suffixesadd=.txt
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
@@ -315,6 +318,11 @@ nnoremap <leader>sl :source $HOME/.vim/session/
 
 " open url
 nnoremap <leader>ou :!firefox <c-r><c-a><cr><cr>
+
+" put current buffer file basename in @1 register
+nnoremap <leader>cz :let @1="[[".expand('%:t:r')."]]"<CR>
+" generate zettel filename
+nnoremap <leader>nz :execute "edit " . strftime('%d%m%Y%H%M.txt')<CR>
 
 " ----------------------}}}
 " Netrw {{{
@@ -718,6 +726,9 @@ augroup END
 " ----------------------}}}
 " Work in progress {{{
 " -------------------------
+
+" TODO:
+" add snippets "default template" like skeleton for each langage (start with dokuwiki)
 
 " TODO :
 " mapping : Fugitive
