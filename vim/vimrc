@@ -741,6 +741,9 @@ augroup END
 " When starting to edit a new file, you could make Vim insert a skeleton:
 "         :autocmd BufNewFile *.[ch]  0read ~/skeletons/skel.c
 
+" Add firefox command to research error_log or other stuff like that:
+" firefox --search <c-r>
+
 " ----------------------}}}
 " Archive {{{
 " -------------------------
