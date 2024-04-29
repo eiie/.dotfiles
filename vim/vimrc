@@ -727,6 +727,12 @@ augroup END
 " Work in progress {{{
 " -------------------------
 
+" type <C-R>! in insert mode to insert result of a system command
+function! ExternalCommandResult()
+  return system(input('Command: '))[:-2]
+endfunction
+inoremap <C-R>! <C-R>=ExternalCommandResult()<cr>
+
 " TODO:
 " add snippets "default template" like skeleton for each langage (start with dokuwiki)
 
