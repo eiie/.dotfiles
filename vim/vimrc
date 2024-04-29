@@ -356,7 +356,7 @@ function! ToggleNetrw()
 	let g:NetrwIsOpen=1
   let g:netrw_browse_split=4 "Open in previous window when netrw is used in a split
 	silent Vexplore"! for right side
-	silent :hi CursorLine term=none cterm=none ctermbg=8
+	"silent :hi CursorLine term=none cterm=none ctermbg=8
 	silent :setlocal cursorline
     endif
 endfunction

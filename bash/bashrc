@@ -206,6 +206,7 @@ fi
 # Common {{{
 # -------------
 export EDITOR=vim
+export SYSTEMD_EDITOR=vim
 export LANG=en_US.UTF-8
 export PATH=$HOME/.local/bin:$PATH
 
