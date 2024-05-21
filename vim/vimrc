@@ -317,9 +317,6 @@ nnoremap <leader>pve :!ansible-vault encrypt --vault-password-file=~/ansible-vau
 nnoremap <leader>ss :mksession! $HOME/.vim/session/
 nnoremap <leader>sl :source $HOME/.vim/session/
 
-" open url
-nnoremap <leader>ou :!firefox <c-r><c-a><cr><cr>
-
 " put current buffer file basename in @1 register
 nnoremap <leader>cz :let @1="[[".expand('%:t:r')."]]"<CR>
 " generate zettel filename
