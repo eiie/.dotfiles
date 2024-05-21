@@ -276,6 +276,7 @@ nnoremap <leader>gp :Git push <cr>
 nnoremap <leader>gl :GV <cr>
 nnoremap <leader>gg yaw:silent Ggrep <c-r>"<cr>:copen<cr>
 nnoremap <leader>gG yaW:silent Ggrep <c-r>"<cr>:copen<cr>
+nnoremap <leader>gb :Git blame <cr>
 
 " Make mapping
 nnoremap <leader>ma :make <cr> <cr>
@@ -396,10 +397,10 @@ set laststatus=2 " always enable status line
 set ruler " position in %
 
 set statusline=
-set statusline+=%<
 set statusline+=%#GitStatusLine#
 set statusline+=\ %n
 set statusline+=\ %0*
+set statusline+=%<
 set statusline+=\ %f
 set statusline+=\ %0*
 set statusline+=\ %h
