@@ -363,10 +363,10 @@ endfunction
 nnoremap <silent> ù :call ToggleNetrw()<cr>
 
 " Start vim on current directory
-augroup VimStartup
- au!
- au VimEnter * if expand("%") == "" | e . | endif
-augroup END
+" augroup VimStartup
+"  au!
+"  au VimEnter * if expand("%") == "" | e . | endif
+" augroup END
 
 
 " ----------------------}}}
