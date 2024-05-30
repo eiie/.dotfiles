@@ -118,4 +118,19 @@ alias vim='vit'
 # -----------
 alias rss="sfeed_update && sfeed_curses $HOME/.sfeed/feeds/*"
 
+# ----------- }}}
+# docker {{{
+# -----------
+
+alias ds="sudo docker container ls"
+de()
+{
+  if [[ $# -ne 1 ]]; then
+    echo "Please enter a container ID"
+  else
+    sudo docker exec -it "$1" bash
+  fi
+}
+
+
 # vim: foldmethod=marker:foldmarker={{{,}}}
