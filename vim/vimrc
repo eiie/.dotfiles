@@ -494,7 +494,7 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,term
 set background=light
 
 " Normal
-highlight Normal ctermfg=15 ctermbg=0
+highlight Normal ctermfg=15 "ctermbg=none
 
 " StatusLine
 highlight StatusLine		term=none cterm=none ctermfg=0 ctermbg=2	"status line of current window
@@ -520,30 +520,41 @@ set colorcolumn=0
 " Terminal
 highlight StatusLineTerm	term=none cterm=none ctermfg=0 ctermbg=5	"status line of current window
 highlight StatusLineTermNC	term=none cterm=none ctermfg=5 ctermbg=8	"status lines of not-current windows
-highlight Terminal		term=none cterm=none ctermfg=15 ctermbg=0	"terminal window
+highlight Terminal		term=none cterm=none ctermfg=15 " ctermbg=none	"terminal window
 
 " Splits
-highlight VertSplit		term=none cterm=none ctermfg=8 ctermbg=0	"vertical split
+highlight VertSplit		term=none cterm=none ctermfg=8 ctermbg=none	"vertical split
 
 " Numbers
-highlight LineNR 		term=none cterm=none ctermfg=8 ctermbg=0	"numbers on the ruler
-highlight CursorLineNR		term=none cterm=none ctermfg=2 ctermbg=0	"cursor number on the ruler
+highlight LineNR 		term=none cterm=none ctermfg=8 ctermbg=none	"numbers on the ruler
+highlight CursorLineNR		term=none cterm=none ctermfg=2 ctermbg=none	"cursor number on the ruler
 
 " Folds
-highlight Folded		term=none cterm=none ctermfg=2 ctermbg=0	"fold
-highlight FoldColumn		term=none cterm=none ctermfg=0 ctermbg=0	"fold column (ruler)
+highlight Folded		term=none cterm=none ctermfg=2 ctermbg=none	"fold
+highlight FoldColumn		term=none cterm=none ctermfg=8 ctermbg=none	"fold column (ruler)
+highlight SignColumn ctermbg=none "sign column
+highlight FoldColumn ctermbg=none "fold column
 
 " Pop-up menu
 highlight Pmenu			term=none cterm=none ctermfg=15 ctermbg=8	"normal item
 highlight PmenuSel		term=none cterm=none ctermfg=8 ctermbg=2	"selected item
-highlight PmenuSbar		term=none cterm=none ctermfg=0 ctermbg=15	"scrollbar
-highlight PmenuThumb		term=none cterm=none ctermfg=0 ctermbg=2	"thumb of scrollbar
+highlight PmenuSbar		term=none cterm=none  ctermbg=15 " ctermfg=0	"scrollbar
+highlight PmenuThumb		term=none cterm=none " ctermfg=0 ctermbg=2	"thumb of scrollbar
 
 " Quickfix list
 highlight QuickFixLine		term=none cterm=none ctermbg=4 ctermfg=0	"quickfix list
 
 " GitStatusLine
-highlight GitStatusLine		term=none cterm=none ctermbg=0 ctermfg=2	"git status line
+highlight GitStatusLine		term=none cterm=none ctermfg=2 " ctermbg=none	"git status line
+
+" GitGutter
+
+highlight GitGutterAdd     ctermbg=none ctermfg=2 "git gutter
+highlight GitGutterChange  ctermbg=none ctermfg=3 "git gutter
+highlight GitGutterDelete  ctermbg=none ctermfg=1 "git gutter
+
+" ToolBar
+
 
 "0 -> Black, 2 -> Green, 3 -> Yellow, 4 -> Blue, 8 -> Grey, 15 -> White
 
@@ -811,7 +822,7 @@ inoremap <C-R>! <C-R>=ExternalCommandResult()<cr>
 "     autocmd BufEnter * let b:git_branch = Gitbranch()
 " augroup END
 
-" au InsertEnter * hi StatusLine term=none cterm=none ctermbg=0 ctermbg=3		"status line when entering insert mode
+" au InsertEnter * hi StatusLine term=none cterm=none ctermbg=none ctermbg=3		"status line when entering insert mode
 " au InsertLeave * hi StatusLine term=none cterm=none ctermfg=0 ctermbg=2		"reset when leaving insert mode
 
 " " asyncomplete-Ultisnips registration
