@@ -65,21 +65,13 @@ alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
 # ----------- }}}
 # todo list {{{
 # -----------
-alias td='vi ~/Documents/todo.md'
-alias t='vi ~/t'
-
-# ----------- }}}
-# pacman {{{
-# -----------
-alias pacmanautoremove='pacman -Qtdq | sudo pacman -Rns -'
-alias pacmanexplicitinstalled='pacman -Qqem'
+alias td='vi ~/Documents/plog/todo.md'
+alias sui='vi ~/Documents/plog/suivi.md'
+alias tds='cd ~/Documents/plog && vim -O *'
 
 # ----------- }}}
 # mount {{{
 # -----------
-
-alias mountnas='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis,file_mode=0777,dir_mode=0777 //nas.osmoziswifi.com/osmozis /mnt/nas/'
-alias mounthome='sudo mount -t cifs -o vers=2.0,username=rdiep,domain=osmozis,file_mode=0777,dir_mode=0777 //nas.osmoziswifi.com/home /mnt/home/'
 
 # ----------- }}}
 # info {{{
@@ -116,7 +108,7 @@ alias vim='vit'
 # ----------- }}}
 # sfeed {{{
 # -----------
-alias rss="sfeed_update && sfeed_curses $HOME/.sfeed/feeds/*"
+#alias rss="sfeed_update && sfeed_curses $HOME/.sfeed/feeds/*"
 
 # ----------- }}}
 # docker {{{
