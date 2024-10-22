@@ -68,6 +68,7 @@ alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
 alias td='vi ~/Documents/plog/todo.md'
 alias sui='vi ~/Documents/plog/suivi.md'
 alias tds='cd ~/Documents/plog && vim -O *'
+alias n='vi ~/Documents/notes.md'
 
 # ----------- }}}
 # mount {{{
