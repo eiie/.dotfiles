@@ -91,6 +91,10 @@ source $HOME/.vim/abbrev
 " suffixesadd (to use gf with dokuwiki links)
 set suffixesadd=.txt
 
+" clipboard
+" set clipboard=unnamed
+set clipboard=unnamed
+
 " ----------------------}}}
 " Mappings {{{
 " -------------------------
