@@ -92,7 +92,6 @@ source $HOME/.vim/abbrev
 set suffixesadd=.txt
 
 " clipboard
-" set clipboard=unnamed
 set clipboard=unnamed
 
 " ----------------------}}}
