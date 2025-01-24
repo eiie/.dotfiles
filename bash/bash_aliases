@@ -60,7 +60,7 @@ alias gw='git worktree add -b'
 # ----------- }}}
 # web server {{{
 # -----------
-alias ws='(firefox http://localhost:8000 &) && (python -m http.server 8000)'
+alias ws='(firefox http://localhost:8000 &) && (python3 -m http.server 8000)'
 
 # ----------- }}}
 # todo list {{{
@@ -73,6 +73,9 @@ alias n='vi ~/Documents/notes.md'
 # ----------- }}}
 # mount {{{
 # -----------
+alias mounthome='sudo mount -t cifs //nas2.corp.oc3n.net/home $HOME/nas -o credentials=~/.credentials,uid=$(id -u),gid=$(id -g),vers=3.0'
+
+
 
 # ----------- }}}
 # info {{{
@@ -125,5 +128,14 @@ de()
   fi
 }
 
+# ----------- }}}
+# dmenu {{{
+# -----------
+
+#alias s='$(tail -n +20 /etc/hosts | sed "/^\s*#/d; /^\s*$/d" | dmenu -i -l 10 -p "Select host to connect to "  | awk \'{print $2}\')'
+s() {
+  host=$(tail -n +20 /etc/hosts | sed "/^\s*#/d; /^\s*$/d" | dmenu -i -l 10 -p "Select host to connect to "  | awk '{print $2}')
+  ssh "$host"
+}
 
 # vim: foldmethod=marker:foldmarker={{{,}}}

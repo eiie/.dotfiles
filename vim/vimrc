@@ -89,7 +89,7 @@ set mouse=""
 source $HOME/.vim/abbrev
 
 " suffixesadd (to use gf with dokuwiki links)
-set suffixesadd=.txt
+set suffixesadd=.txt,.j2
 
 " clipboard
 set clipboard=unnamed
